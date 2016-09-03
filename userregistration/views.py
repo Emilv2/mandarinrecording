@@ -1,12 +1,19 @@
-from django.shortcuts import render_to_response
-from django.contrib.auth.forms import UserCreationForm 
+from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
 from .models import ContributorCreationForm
+from django.template.context_processors import csrf
+from django.http import HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 
 def registration(request):
+    csrf_token = {}
+    csrf_token.update(csrf(request))
+
     form = ContributorCreationForm(request.POST)
     if form.is_valid():
         user = form.save()
-    
-    context = {'form' : form}
+        return HttpResponseRedirect('/thanks/')
 
-    return render_to_response('registration.html', context)
+    context = {'form' : form}
+#TODO
+    return render(request, 'registration.html', context)
