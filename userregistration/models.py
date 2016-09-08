@@ -1,20 +1,24 @@
 from django.db import models
 from django import forms
 from enum import Enum
+from os import walk
+from random import choice
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext, ugettext_lazy as _
 from .contributor import Contributor
+
+AUDIO_DIR = 'userregistration/static'
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
 
     email = forms.EmailField(
-           label=_("e-mail address"),
-           strip=True,
-           required=False,
-           widget=forms.EmailInput,
-           )
+            label=_("e-mail address"),
+            strip=True,
+            required=False,
+            widget=forms.EmailInput,
+            )
 
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self).save(commit=False)
