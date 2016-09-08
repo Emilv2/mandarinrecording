@@ -1,8 +1,19 @@
 {% block content %}
 <form action='' method="POST">
-{% csrf_token %}
+    {% csrf_token %}
     {{user_form}}
     {{contributor_form}}
+
+    {% for captcha in captcha_list %}
+
+    {{captcha}}
+
+    {% load staticfiles %}
+    <audio controls>
+        <source src="{% static captcha.audio_file %}" type="audio/mpeg">
+    </audio>
+    {% endfor %}
+
     <input type="submit" value="Sign Up">
 </form>
 {% endblock %}
