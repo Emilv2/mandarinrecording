@@ -15,6 +15,11 @@ class Contributor(models.Model):
             max_length=1,
             choices=SEX_CHOISES)
 
+    accepted_license = models.BooleanField(
+            blank=False,
+            default=False
+            )
+
     @classmethod
     def create(cls, user, sex):
         contributor = cls(user=user, sex=sex)

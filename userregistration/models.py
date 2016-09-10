@@ -5,6 +5,7 @@ from os import walk
 from random import choice
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.html import format_html
 from .contributor import Contributor
 
 AUDIO_DIR = 'userregistration/static'
@@ -34,10 +35,17 @@ class ContributorCreationForm(forms.ModelForm):
 
     class Meta:
         model = Contributor
-        fields = ['sex']
+        fields = ['sex', 'accepted_licence']
 
     sex = forms.ChoiceField(
             choices=Contributor.SEX_CHOISES + ((None, 'Please select one'),)
+            )
+
+    accepted_licence = forms.BooleanField(
+            label=_(format_html("I accept that my contributions are released under the \
+                    <a href='https://creativecommons.org/licenses/by-sa/4.0/'> \
+                Creative Commons CC BY-SA 4.0 license</a>.")),
+            required=True
             )
 
     def save(self, commit=True):
