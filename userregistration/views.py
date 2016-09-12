@@ -5,6 +5,7 @@ from .models import ContributorCreationForm, CustomUserCreationForm, \
 from django.template.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, login
 
 def registration(request):
     csrf_token = {}
@@ -21,7 +22,12 @@ def registration(request):
         contributor = contributor_form.save(commit=False)
         contributor.user = user
         contributor.save()
-        return HttpResponseRedirect('/thanks/')
+        contributor = authenticate(
+                username=user_form.cleaned_data['username'],
+                password=form.cleaned_data['password1'],
+                )
+        login(request, contributor)
+        return HttpResponseRedirect('/recording/')
 
     audio_files = ['audio_file.mp3', 'audio_file.mp3', 'audio_file.mp3']
     context = {'user_form' : user_form,
@@ -30,3 +36,22 @@ def registration(request):
             'audio_files' : audio_files}
     #TODO
     return render(request, 'registration.html', context)
+
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return HttpResponseRedirect('/recording/')
+        else:
+            pass
+            #TODO hReturn a 'disabled account' error message
+    else:
+        #TODO show some login error message
+        return HttpResponseRedirect('/login/')
+
+#TODO
+def password_reset(request):
+    pass
