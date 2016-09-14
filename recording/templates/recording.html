@@ -133,7 +133,7 @@ function upload(blob, progressBar){
         xhr.upload.onloadend = function() {
             message('Upload complete');
         }
-         If you want you can show the upload progress using a progress bar
+         //If you want you can show the upload progress using a progress bar
         var progressBar = document.querySelector('progress');
         xhr.upload.onprogress = function(e) {
             if (e.lengthComputable) {
