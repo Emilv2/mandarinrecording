@@ -63,11 +63,16 @@
       var button = document.createElement('button');
       var t = document.createTextNode("Upload?");
       button.id = 'button';
+      button.disabled = true;
       button.appendChild(t);
+
       button.onclick = function() {
           upload(blob);
       };
       au.controls = true;
+      au.onplay =  function() {
+          button.disabled = false;
+      }
       au.src = url;
       hf.href = url;
       hf.download = new Date().toISOString() + '.wav';
