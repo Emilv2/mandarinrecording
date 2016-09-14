@@ -5,7 +5,8 @@ from .models import ContributorCreationForm, CustomUserCreationForm, \
 from django.template.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, views
+from django.contrib.auth import views as auth_views
 
 def registration(request):
     csrf_token = {}
@@ -24,7 +25,7 @@ def registration(request):
         contributor.save()
         contributor = authenticate(
                 username=user_form.cleaned_data['username'],
-                password=form.cleaned_data['password1'],
+                password=user_form.cleaned_data['password1'],
                 )
         login(request, contributor)
         return HttpResponseRedirect('/recording/')
@@ -37,20 +38,11 @@ def registration(request):
     #TODO
     return render(request, 'registration.html', context)
 
-def login(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            return HttpResponseRedirect('/recording/')
-        else:
-            pass
-            #TODO hReturn a 'disabled account' error message
-    else:
-        #TODO show some login error message
-        return HttpResponseRedirect('/login/')
+def login(request, *args, **kwargs):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/recording/')
+    return auth_views.login(request, *args, **kwargs)
+
 
 #TODO
 def password_reset(request):
