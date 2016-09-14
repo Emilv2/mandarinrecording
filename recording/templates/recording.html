@@ -60,19 +60,12 @@
       var au = document.createElement('audio');
       var hf = document.createElement('a');
 
-
-      var progress = document.createElement('progress');
-      progress.min = 0;
-      progress.max = 100;
-      progress.value = 0;
-      var progressText = document.createTextNode("Progress: ");
-
       var button = document.createElement('button');
       var t = document.createTextNode("Upload?");
       button.id = 'button';
       button.appendChild(t);
       button.onclick = function() {
-          upload(blob, progress);
+          upload(blob);
       };
       au.controls = true;
       au.src = url;
@@ -82,9 +75,7 @@
       li.appendChild(au);
       li.appendChild(hf);
       li.appendChild(button);
-      li.appendChild(progress);
-      li.appendChild(progressText);
-      
+
       recordingslist.appendChild(li);
     });
   }
@@ -122,7 +113,7 @@ function getCookie(name) {
     }
  
 // Actual Upload function using xhr
-function upload(blob, progressBar){
+function upload(blob){
         var csrftoken = getCookie('csrftoken');
  
         var xhr = new XMLHttpRequest();
@@ -131,16 +122,7 @@ function upload(blob, progressBar){
         xhr.setRequestHeader("MyCustomHeader", "Put anything you need in here, like an ID");
  
         xhr.upload.onloadend = function() {
-            message('Upload complete');
         }
-         //If you want you can show the upload progress using a progress bar
-        var progressBar = document.querySelector('progress');
-        xhr.upload.onprogress = function(e) {
-            if (e.lengthComputable) {
-                progressBar.value = (e.loaded / e.total) * 100;
-                progressBar.textContent = progressBar.value; // Fallback for unsupported browsers.
-            }
-        };
  
         xhr.send(blob);
 }
