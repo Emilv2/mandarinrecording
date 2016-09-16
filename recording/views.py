@@ -17,9 +17,16 @@ def recording(request):
 def upload(request):
     customHeader = request.META['HTTP_MYCUSTOMHEADER']
     # obviously handle correct naming of the file and place it somewhere like media/uploads/
-    uploadedFile = open("recording.ogg", "wb")
-    # the actual file is in request.body
-    uploadedFile.write(request.body)
-    uploadedFile.close()
+    write_audio_file("ma1_testusername",request.body)
     # put additional logic like creating a model instance or something like this here
     return HttpResponse(escape(repr(request)))
+
+def write_audio_file(filename, data):
+    i = 1
+    while True:
+        try:
+            with open("{}_{}.wav".format(filename,str(i).zfill(3)), "xb") as audio_file:
+                audio_file.write(data)
+            break
+        except FileExistsError:
+            i += 1

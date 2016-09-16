@@ -63,16 +63,20 @@
 
       var button = document.createElement('button');
       var t = document.createTextNode("Upload?");
+      var uploaded = false;
       button.id = 'button';
       button.disabled = true;
       button.appendChild(t);
 
       button.onclick = function() {
           upload(blob);
+          t.nodeValue = "Done!"
+          button.disabled = true;
+          uploaded = true;
       };
       au.controls = true;
       au.onplay =  function() {
-          button.disabled = false;
+          if (!uploaded) button.disabled = false;
       }
       au.src = url;
       hf.innerHTML = 
