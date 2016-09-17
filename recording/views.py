@@ -16,8 +16,13 @@ def recording(request):
 
 def upload(request):
     customHeader = request.META['HTTP_MYCUSTOMHEADER']
+    syllable = "rast"
     # obviously handle correct naming of the file and place it somewhere like media/uploads/
-    write_audio_file("ma1_testusername",request.body)
+    write_audio_file(
+            "{}__{}_{}".format(syllable,
+                request.user.last_name,
+                request.user.first_name),
+            request.body)
     # put additional logic like creating a model instance or something like this here
     return HttpResponse(escape(repr(request)))
 
