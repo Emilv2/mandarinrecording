@@ -2,7 +2,7 @@ from django.db import models
 from django import forms
 from enum import Enum
 from os import walk
-from random import choice
+import random
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.utils.html import format_html
@@ -48,9 +48,11 @@ class ContributorCreationForm(forms.ModelForm):
             required=True
             )
 
+
     def save(self, commit=True):
         contributor = super(ContributorCreationForm, self).save(commit=False)
         contributor.sex = self.cleaned_data["sex"]
+        contributor.syllables_list = create_base_syllables_list()
         if commit:
             contributor.save()
         return contributor
@@ -69,7 +71,7 @@ def read_file():
     return a random filename from the audio directory
     """
     _, _, filenames = next(walk(AUDIO_DIR))
-    return choice(filenames)
+    return random.choice(filenames)
 
 class AudioCaptchaForm(forms.Form):
 
@@ -92,3 +94,17 @@ class AudioCaptchaForm(forms.Form):
             else:
                 return False
 
+def create_base_syllables_list():
+    with open('syllables_without_tones_short_list','r') as text_file:
+        syllables = [line.strip('\n') for line in text_file.readlines()]
+        selection1 = random.sample(syllables,4)
+        selection2 = [random.choice(syllables) for i in range(4)]
+        sound_list= ''
+        for i in range(4):
+            for j in range(1,6):
+                sound_list += selection1[i]+str(j)+';'
+        for i in range(2):
+            for j in range(1,5):
+                for k in range(1,6):
+                    sound_list += selection2[i]+str(j)+"_"+selection2[i+1]+str(k)+';'
+        return sound_list

@@ -35,3 +35,8 @@ def write_audio_file(filename, data):
             break
         except FileExistsError:
             i += 1
+
+def get_next_syllable(request):
+    user.first_name
+    import pdb; pdb.set_trace()
+    return HttpResponse(request.user.first_name,  content_type="text/plain")
