@@ -25,7 +25,8 @@
   
   <h2>Recordings</h2>
   <ul id="recordingslist"></ul>
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
+  {% load static %}
+  <script src="{% static "jquery-1.11.3.min.js" %}"></script>
   <script>
 
   var audio_context;
@@ -191,8 +192,22 @@ function upload(blob){
  
         xhr.send(blob);
 }
+function getNextSyllable() {
+    var csrftoken = getCookie('csrftoken');
+    request = new XMLHttpRequest();
+    request.open('GET', 'getNextSyllable/', true);
+    request.setRequestHeader('X-CSRFToken', csrftoken);
+    request.send( null );
+    debugger;
+    while (request.status == 0);
+    return request.responseText;
+}
+
+function getNextSyllable2() {
+    $.get("getNextSyllable/", function(data) { alert(data)});
+}
+
   </script>
 
-  {% load static %}
   <script src="{% static "recorder.js" %}"></script>
 {% endblock %}
