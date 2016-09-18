@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.utils.html import escape
+from userregistration.models import get_random_syllables
 
 @login_required()
 def recording(request):
@@ -15,6 +16,7 @@ def recording(request):
     return render(request, 'recording.html', context)
 
 def upload(request):
+    params = request.body
     pinyin = request.META['HTTP_PINYIN']
 #     import pdb; pdb.set_trace()
     # obviously handle correct naming of the file and place it somewhere like media/uploads/
@@ -23,10 +25,11 @@ def upload(request):
                 request.user.last_name,
                 request.user.first_name,
                 request.user.username),
-            request.body)
+            params)
     request.user.contributor.pop_base_syllables_list(pinyin)
     # put additional logic like creating a model instance or something like this here
-    return HttpResponse(escape(repr(request)))
+#     return HttpResponse('teeeeestjeeeees')
+    return get_next_syllable(request)
 
 def write_audio_file(filename, data):
     i = 1
@@ -44,6 +47,5 @@ def get_next_syllable(request):
     if len(syllable_list) > 0:
         next_syllable = syllable_list[0]
     else:
-        pass
-        #TODO
+        next_syllable = get_random_syllables()
     return HttpResponse(next_syllable,  content_type="text/plain")

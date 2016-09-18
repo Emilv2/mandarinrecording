@@ -21,134 +21,57 @@
   <p>Make sure you are using a recent version of Google Chrome.</p>
   <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
   <p id="nextSyllable">This is the paragraph you cant to be able to edit</p>
-  <button onclick="startRecording(this);" id='record_button'>record</button>
-  <button onclick="stopRecording(this);" disabled>stop</button>
-  
   <h2>Recordings</h2>
-  <ul id="recordingslist"></ul>
+  <ul id="recordingslist2">
+      <li>
+          <audio id='audioElement' controls></audio>
+          <p>please listen to your recording before you upload it</p>
+          <button id='uploadButton'>upload</button>
+          <button id='recordButton'>record</button>
+          <button id='stopButton'>stop</button>
+      </li>
+  </ul>
   {% load static %}
   <script src="{% static "jquery-1.11.3.min.js" %}"></script>
-  <script>
-
+<script>
+  var recordButton = document.getElementById('recordButton');
+  var stopButton = document.getElementById('stopButton');
+  var uploadButton = document.getElementById('uploadButton');
+  var audioElement = document.getElementById('audioElement');
+  var audioFile;
+  var uploaded = false;
   var audio_context;
   var recorder;
 
-  function disableRecordingButtons() {
-    var button_list = document.getElementsByName('rerecord_button');
-    for( var i = 0; i<button_list.length; i++) {
-        button_list[i].disabled = true;
-    }
-    document.getElementById('record_button').disabled = true;
+  recordButton.onclick = function() {
+      recorder && recorder.record();
+      this.disabled = true;
+      stopButton.disabled = false;
+  };
+
+  stopButton.onclick = function() {
+      recorder && recorder.stop();
+      this.disabled = true;
+      recordButton.disabled = false;
+      recorder && recorder.exportWAV(function(blob) {
+          audioFile = blob;
+          audioElement.src = URL.createObjectURL(blob);
+          recorder.clear();
+      })
   }
 
-  function enableRecordingButtons() {
-    var button_list = document.getElementsByName('rerecord_button');
-    for( var i = 0; i<button_list.length; i++) {
-        button_list[i].disabled = false;
-    }
-    document.getElementById('record_button').disabled = false;
+  uploadButton.onclick = function() {
+      upload(audioFile, document.getElementById('nextSyllable').innerHTML);
+      setNextSyllable();
+      this.disabled = true;
+  }
+  audioElement.onplay = function () {
+      if (!uploaded) uploadButton.disabled = false;
   }
 
   function startUserMedia(stream) {
     var input = audio_context.createMediaStreamSource(stream);
-
     recorder = new Recorder(input);
-  }
-
-  function startRecording(button) {
-    recorder && recorder.record();
-    disableRecordingButtons();
-    button.nextElementSibling.disabled = false;
-  }
-
-  function stopRecording(button) {
-    recorder && recorder.stop();
-    button.disabled = true;
-    enableRecordingButtons();
-    
-    // create WAV download link using audio data blob
-    createDownloadLink();
-    
-    recorder.clear();
-  }
-
-  function createDownloadLink() {
-    recorder && recorder.exportWAV(function(blob) {
-      var audiofile = blob;
-      var url = URL.createObjectURL(audiofile);
-      var li = document.createElement('li');
-      var au = document.createElement('audio');
-      var hf = document.createElement('p');
-      var pinyin = document.createElement('p');
-
-      var upload_button = document.createElement('button');
-      var rerecord_button = document.createElement('button');
-      var stop_button = document.createElement('button');
-      var upload_text = document.createTextNode("Upload?");
-      var rerecord_text = document.createTextNode("Redo?");
-      var stop_text = document.createTextNode("stop");
-      var uploaded = false;
-      var played = false;
-      upload_button.id = 'upload_button';
-      rerecord_button.name = 'rerecord_button';
-      stop_button.id = 'stop_button';
-      pinyin.id = 'pinyin';
-      upload_button.disabled = true;
-      stop_button.disabled = true;
-      upload_button.appendChild(upload_text);
-      rerecord_button.appendChild(rerecord_text);
-      stop_button.appendChild(stop_text);
-
-      upload_button.onclick = function() {
-          upload(audiofile, pinyin.innerHTML);
-          upload_text.nodeValue = "Done!"
-          upload_button.disabled = true;
-          rerecord_button.disabled = true;
-          uploaded = true;
-      }
-
-      stop_button.onclick = function() {
-          recorder && recorder.stop();
-          recorder && recorder.exportWAV(function(blob) {
-              audiofile = blob;
-              url = URL.createObjectURL(audiofile);
-              au.src = url;
-              recorder.clear();
-          })
-          stop_button.disabled = true;
-          rerecord_button.disabled = false;
-          if (played) upload_button.disabled = false;
-          enableRecordingButtons();
-      }
-
-      rerecord_button.onclick = function() {
-          recorder && recorder.record();
-          stop_button.disabled = false;
-          upload_button.disabled = true;
-          disableRecordingButtons();
-          played = false;
-
-      }
-
-      
-      au.controls = true;
-      au.onplay =  function() {
-          if (!uploaded) upload_button.disabled = false;
-          played = true;
-      }
-      au.src = url;
-      hf.innerHTML = 
-          "{% trans "please listen to your recording before you upload" %}";
-      pinyin.innerHTML = document.getElementById('nextSyllable').innerHTML
-      li.appendChild(au);
-      li.appendChild(hf);
-      li.appendChild(upload_button);
-      li.appendChild(rerecord_button);
-      li.appendChild(stop_button);
-      li.appendChild(pinyin);
-
-      recordingslist.appendChild(li);
-    });
   }
 
   window.onload = function init() {
@@ -157,13 +80,13 @@
       window.AudioContext = window.AudioContext || window.webkitAudioContext;
       navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
       window.URL = window.URL || window.webkitURL;
-      
       audio_context = new AudioContext;
     } catch (e) {
       alert('No web audio support in this browser!');
     }
+    uploadButton.disabled = true;
+    stopButton.disabled = true;
     setNextSyllable();
-    
     navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
     });
   };
@@ -187,25 +110,41 @@ function getCookie(name) {
 // Actual Upload function using xhr
 function upload(blob, pinyin){
         var csrftoken = getCookie('csrftoken');
- 
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'upload/', true);
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
         xhr.setRequestHeader("pinyin", pinyin);
- 
-        xhr.upload.onloadend = function() {
+        xhr.upload.onloadend = function(xhr) {
+            debugger;
         }
- 
         xhr.send(blob);
-        setNextSyllable();
 }
 
-function setNextSyllable() {
+function upload(blob, pinyin) {
+    var fd = new FormData();
+    fd.append('fname', 'test.wav');
+    fd.append('data', blob);
+    $.ajax({
+        type: 'POST',
+        url: 'upload/',
+        data: blob,
+        processData: false,
+        contentType: false,
+        headers: {
+            'X-CSRFToken':getCookie('csrftoken'),
+            'pinyin':pinyin,
+                },
+        complete: function (data) {
+          document.getElementById('nextSyllable').innerHTML = data.responseText;
+        }
+    })
+}
+
+    function setNextSyllable() {
     return $.get("getNextSyllable/", function(data) {
     document.getElementById('nextSyllable').innerHTML = data;
     });
 }
-
   </script>
 
   <script src="{% static "recorder.js" %}"></script>

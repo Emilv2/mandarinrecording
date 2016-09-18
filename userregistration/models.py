@@ -108,3 +108,15 @@ def create_base_syllables_list():
                 for k in range(1,6):
                     sound_list += selection2[i]+str(j)+"_"+selection2[i+1]+str(k)+';'
         return sound_list
+
+def get_random_syllables():
+    with open('syllables_with_tones','r') as text_file:
+        syllables = [line.strip('\n') for line in text_file.readlines()]
+        length = random.randint(1,4)
+        while True:
+            selection = random.choice(syllables)
+            if selection[-1] != '5':
+                break
+        for i in range(length-1):
+            selection += '_'+random.choice(syllables)
+        return selection
