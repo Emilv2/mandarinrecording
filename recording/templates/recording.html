@@ -17,9 +17,10 @@
 
   <h1>Recorder.js simple WAV export example</h1>
 
+  <p>Welcome {{ user.last_name }} {{ user.first_name }}!</p>
   <p>Make sure you are using a recent version of Google Chrome.</p>
   <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
-
+  <p id="nextSyllable">This is the paragraph you cant to be able to edit</p>
   <button onclick="startRecording(this);" id='record_button'>record</button>
   <button onclick="stopRecording(this);" disabled>stop</button>
   
@@ -78,6 +79,7 @@
       var li = document.createElement('li');
       var au = document.createElement('audio');
       var hf = document.createElement('p');
+      var pinyin = document.createElement('p');
 
       var upload_button = document.createElement('button');
       var rerecord_button = document.createElement('button');
@@ -90,6 +92,7 @@
       upload_button.id = 'upload_button';
       rerecord_button.name = 'rerecord_button';
       stop_button.id = 'stop_button';
+      pinyin.id = 'pinyin';
       upload_button.disabled = true;
       stop_button.disabled = true;
       upload_button.appendChild(upload_text);
@@ -97,7 +100,7 @@
       stop_button.appendChild(stop_text);
 
       upload_button.onclick = function() {
-          upload(audiofile);
+          upload(audiofile, pinyin.innerHTML);
           upload_text.nodeValue = "Done!"
           upload_button.disabled = true;
           rerecord_button.disabled = true;
@@ -136,11 +139,13 @@
       au.src = url;
       hf.innerHTML = 
           "{% trans "please listen to your recording before you upload" %}";
+      pinyin.innerHTML = document.getElementById('nextSyllable').innerHTML
       li.appendChild(au);
       li.appendChild(hf);
       li.appendChild(upload_button);
       li.appendChild(rerecord_button);
       li.appendChild(stop_button);
+      li.appendChild(pinyin);
 
       recordingslist.appendChild(li);
     });
@@ -157,6 +162,7 @@
     } catch (e) {
       alert('No web audio support in this browser!');
     }
+    setNextSyllable();
     
     navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
     });
@@ -179,32 +185,25 @@ function getCookie(name) {
     }
  
 // Actual Upload function using xhr
-function upload(blob){
+function upload(blob, pinyin){
         var csrftoken = getCookie('csrftoken');
  
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'upload/', true);
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        xhr.setRequestHeader("MyCustomHeader", "Put anything you need in here, like an ID");
+        xhr.setRequestHeader("pinyin", pinyin);
  
         xhr.upload.onloadend = function() {
         }
  
         xhr.send(blob);
-}
-function getNextSyllable() {
-    var csrftoken = getCookie('csrftoken');
-    request = new XMLHttpRequest();
-    request.open('GET', 'getNextSyllable/', true);
-    request.setRequestHeader('X-CSRFToken', csrftoken);
-    request.send( null );
-    debugger;
-    while (request.status == 0);
-    return request.responseText;
+        setNextSyllable();
 }
 
-function getNextSyllable2() {
-    $.get("getNextSyllable/", function(data) { alert(data)});
+function setNextSyllable() {
+    return $.get("getNextSyllable/", function(data) {
+    document.getElementById('nextSyllable').innerHTML = data;
+    });
 }
 
   </script>

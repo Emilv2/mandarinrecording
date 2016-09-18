@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
         url(r'^upload', views.upload, name='upload'),
+        url(r'^getNextSyllable', views.get_next_syllable, name='upload'),
         url(r'^$', views.recording, name='recording'),
         ]

@@ -30,7 +30,10 @@ class Contributor(models.Model):
         return contributor
 
     def get_base_syllables_list(this):
-        return this.syllables_list[0:-1].split(';')
+        if len(this.syllables_list) == 0:
+            return []
+        else:
+            return this.syllables_list[0:-1].split(';')
 
     def set_base_syllables_list(this, lst):
         tmp = ''
@@ -38,3 +41,13 @@ class Contributor(models.Model):
             tmp += i + ';'
         this.syllables_list = tmp
         this.save()
+
+    def pop_base_syllables_list(this, string):
+        lst = this.get_base_syllables_list()
+        try:
+            index = lst.index(string)
+            lst.pop(index)
+            this.set_base_syllables_list(lst)
+        except ValueError:
+            pass
+

@@ -15,14 +15,16 @@ def recording(request):
     return render(request, 'recording.html', context)
 
 def upload(request):
-    customHeader = request.META['HTTP_MYCUSTOMHEADER']
-    syllable = "rast"
+    pinyin = request.META['HTTP_PINYIN']
+#     import pdb; pdb.set_trace()
     # obviously handle correct naming of the file and place it somewhere like media/uploads/
     write_audio_file(
-            "{}__{}_{}".format(syllable,
+            "{}__{}_{}_{}".format(pinyin,
                 request.user.last_name,
-                request.user.first_name),
+                request.user.first_name,
+                request.user.username),
             request.body)
+    request.user.contributor.pop_base_syllables_list(pinyin)
     # put additional logic like creating a model instance or something like this here
     return HttpResponse(escape(repr(request)))
 
@@ -37,6 +39,11 @@ def write_audio_file(filename, data):
             i += 1
 
 def get_next_syllable(request):
-    user.first_name
-    import pdb; pdb.set_trace()
-    return HttpResponse(request.user.first_name,  content_type="text/plain")
+    syllable_list = request.user.contributor.get_base_syllables_list()
+    #import pdb; pdb.set_trace()
+    if len(syllable_list) > 0:
+        next_syllable = syllable_list[0]
+    else:
+        pass
+        #TODO
+    return HttpResponse(next_syllable,  content_type="text/plain")
