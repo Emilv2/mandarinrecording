@@ -49,3 +49,6 @@ def get_next_syllable(request):
     else:
         next_syllable = get_random_syllables()
     return HttpResponse(next_syllable,  content_type="text/plain")
+
+def introduction(request):
+    return render(request, 'introduction.html')
