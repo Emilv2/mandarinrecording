@@ -1,0 +1,49 @@
+body{
+    margin:1em auto;
+    max-width:40em;
+    padding:0 .62em;
+    font:1.2em/1.62em sans-serif;
+}
+h1,h2,h3 {
+    line-height:1.2em;
+}
+@media print{
+    body{
+	max-width:none
+    }
+}
+
+#sidebar
+{
+    width:180px;
+    z-index:2;
+    height:100%;
+    position:fixed;
+    left:0;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    float: right;
+}
+
+input:invalid {
+    background-color: #ffdddd;
+}
+
+.errorlist {
+    border: 2px red solid;
+}
