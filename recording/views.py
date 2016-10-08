@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.utils.html import escape
-from userregistration.models import get_random_syllables
+from userregistration.models import get_random_syllables, pretty_pinyin
 
 @login_required()
 def recording(request):
@@ -48,7 +48,7 @@ def get_next_syllable(request):
         next_syllable = syllable_list[0]
     else:
         next_syllable = get_random_syllables()
-    return HttpResponse(next_syllable,  content_type="text/plain")
+    return HttpResponse(pretty_pinyin(next_syllable),  content_type="text/plain")
 
 def introduction(request):
     return render(request, 'introduction.html')
