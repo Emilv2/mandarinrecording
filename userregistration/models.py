@@ -18,10 +18,8 @@ class CustomUserCreationForm(UserCreationForm):
     username = forms.EmailField(
             label=_("e-mail address"),
             strip=True,
-            required=False,
             widget=forms.EmailInput,
             )
-
 
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self).save(commit=False)
