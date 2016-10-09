@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
 class Contributor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -8,21 +9,21 @@ class Contributor(models.Model):
     FEMALE = 'F'
     NO_ANSWER = 'N'
     SEX_CHOISES = (
-            (MALE, 'Male'),
-            (FEMALE, 'Female'),
-            (NO_ANSWER, 'No answer'))
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+        (NO_ANSWER, 'No answer'))
     sex = models.CharField(
-            max_length=1,
-            choices=SEX_CHOISES)
+        max_length=1,
+        choices=SEX_CHOISES)
 
     accepted_license = models.BooleanField(
-            blank=False,
-            default=False
-            )
+        blank=False,
+        default=False
+    )
 
     syllables_list = models.CharField(
-            max_length=700,
-            default = '')
+        max_length=700,
+        default='')
 
     @classmethod
     def create(cls, user, sex):
@@ -50,4 +51,3 @@ class Contributor(models.Model):
             this.set_base_syllables_list(lst)
         except ValueError:
             pass
-
