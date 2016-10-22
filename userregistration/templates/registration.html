@@ -1,20 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+
+<div class="container">
 <form action='' method="POST">
     {% csrf_token %}
-    {{user_form}}
-    {{contributor_form}}
+    {%bootstrap_form user_form%}
+    {% bootstrap_form contributor_form %}
 
     {% for captcha in captcha_list %}
 
-    {{captcha}}
+    {% bootstrap_form captcha%}
 
     {% load staticfiles %}
     <audio controls>
         <source src="{% static captcha.audio_file %}" type="audio/mpeg">
     </audio>
     {% endfor %}
-
-    <input type="submit" value="Sign Up">
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "ok-sign" %} Sign up
+    </button>
+  {% endbuttons %}
 </form>
+</div>
 {% endblock %}
