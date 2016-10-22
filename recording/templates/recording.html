@@ -34,6 +34,7 @@
   {% load static %}
   <script src="{% static "jquery-1.11.3.min.js" %}"></script>
 <script>
+  "use strict";
   var recordButton = document.getElementById('recordButton');
   var stopButton = document.getElementById('stopButton');
   var uploadButton = document.getElementById('uploadButton');
@@ -61,7 +62,7 @@
   }
 
   uploadButton.onclick = function() {
-      upload(audioFile, document.getElementById('nextSyllable').innerHTML);
+      upload(audioFile, window.pinyin.pinyin);
       setNextSyllable();
       this.disabled = true;
   }
@@ -106,19 +107,6 @@ function getCookie(name) {
         }
         return cookieValue;
     }
- 
-// Actual Upload function using xhr
-function upload(blob, pinyin){
-        var csrftoken = getCookie('csrftoken');
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'upload/', true);
-        xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        xhr.setRequestHeader("pinyin", pinyin);
-        xhr.upload.onloadend = function(xhr) {
-            debugger;
-        }
-        xhr.send(blob);
-}
 
 function upload(blob, pinyin) {
     var fd = new FormData();
@@ -135,14 +123,16 @@ function upload(blob, pinyin) {
             'pinyin':pinyin,
                 },
         complete: function (data) {
-          document.getElementById('nextSyllable').innerHTML = data.responseText;
+            setNextSyllable();
         }
     })
 }
 
     function setNextSyllable() {
-    return $.get("getNextSyllable/", function(data) {
-    document.getElementById('nextSyllable').innerHTML = data;
+    return $.getJSON("getNextSyllable/", function(data) {
+        window.pinyin = data;
+        document.getElementById('nextSyllable').innerHTML =
+            window.pinyin.pretty_pinyin;
     });
 }
   </script>
