@@ -20,5 +20,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('userregistration.urls')),
     url(r'^recording/', include('recording.urls')),
-    url(r'', include('blog.urls')),
 ]
