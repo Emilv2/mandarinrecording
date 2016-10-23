@@ -17,12 +17,18 @@
 </head>
 <body>
 
-  <h1>Recorder.js simple WAV export example</h1>
+  <h1>Recording</h1>
 
-  <p>Welcome {{ user.last_name }} {{ user.first_name }}!</p>
+  <h2>Welcome {{ user.last_name }} {{ user.first_name }}!</h2>
+  <p>Record the word by clicking on the "record" button and play it to check
+  if it is correct. You can restart your recording by clicking again on the
+  "record" button if you think you made a mistake. Click on the "upload" button
+  to upload your recording, a new word will appear when you do so.</p>
+  <p>You can make as many recordings as you like, and you can come back later
+  to this page to make more recordings.</p>
   <p>Make sure you are using a recent version of Google Chrome.</p>
-  <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
-  <p id="nextSyllable">This is the paragraph you cant to be able to edit</p>
+  <h2>Next recording:</h2>
+  <h3 id="nextSyllable">This is the paragraph you cant to be able to edit</h3>
   <h2>Recordings</h2>
   <ul id="recordingslist2">
       <li>

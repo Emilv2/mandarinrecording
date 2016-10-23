@@ -53,5 +53,5 @@ def get_next_syllable(request):
         })
 
 
-def introduction(request):
-    return render(request, 'introduction.html')
+def about(request):
+    return render(request, 'about.html')

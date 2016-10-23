@@ -2,9 +2,6 @@
 {% load i18n %}
 {% load static %}
 <html lang="en">
-<head>
-    <title>{% block title %}templates/base.html{% endblock %}</title>
-</head>
 <body>
     {% block sidebar %}
     <!-- Fixed navbar -->
@@ -22,8 +19,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li {% if request.path == '/home/' %}class="active"{% endif %}><a href="home">Home</a></li>
-            <li {% if request.path == '/about/' %}class="active"{% endif %}><a href="about">About</a></li>
-            <li {% if request.path == '/contact/' %}class="active"{% endif %}><a href="contact">Contact</a></li>
+            <li {% if request.path == '/recording/about/' %}class="active"{% endif %}><a href="/recording/about/">About</a></li>
+            <li {% if request.path == '/contact/' %}class="active"{% endif %}><a href="/contact">Contact</a></li>
         {% if user.is_authenticated %}
             <li><a href="/accounts/logout">Logout</a></li>
             <li {% if request.path == '/recording/' %}class="active"{% endif %}><a href="/recording">Recording</a></li>
