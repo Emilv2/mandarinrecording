@@ -1,11 +1,13 @@
 {% extends "base.html" %}
  {% load i18n %}
 {% block content %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
 <head>
     {#TODO necessary? #}
     {% csrf_token %}
 
-
+    <div class="container">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Live input record and playback</title>
   <style type='text/css'>
@@ -24,13 +26,17 @@
   <h2>Recordings</h2>
   <ul id="recordingslist2">
       <li>
+          {% buttons %}
           <audio id='audioElement' controls></audio>
-          <p>please listen to your recording before you upload it</p>
-          <button id='uploadButton'>upload</button>
-          <button id='recordButton'>record</button>
-          <button id='stopButton'>stop</button>
+          </li>
+          <li>
+          <button title='please listen to your recording before you upload it' id='uploadButton' class='btn btn-primary'>upload</button>
+          <button id='recordButton' class='btn btn-default'>record</button>
+          <button id='stopButton' class='btn btn-default'>stop</button>
+          {% endbuttons %}
       </li>
   </ul>
+    </div>
   {% load static %}
   <script src="{% static "jquery-1.11.3.min.js" %}"></script>
 <script>

@@ -26,6 +26,7 @@
             <li {% if request.path == '/contact/' %}class="active"{% endif %}><a href="contact">Contact</a></li>
         {% if user.is_authenticated %}
             <li><a href="/accounts/logout">Logout</a></li>
+            <li {% if request.path == '/recording/' %}class="active"{% endif %}><a href="/recording">Recording</a></li>
         {% else %}
             <li {% if request.path == '/accounts/login/' %}class="active"{% endif %}><a href="/accounts/login">Login</a></li>
             <li {% if request.path == '/accounts/registration/' %}class="active"{% endif %}><a href="/accounts/registration">Register</a></li>
