@@ -2,28 +2,36 @@
 {% block content %}
 {% load bootstrap3 %}
 {% load i18n %}
+{% load staticfiles %}
 {% bootstrap_css %}
-
-<div class="container">
+<link rel="stylesheet" href="/static/css/asterisk.css" />
+<div class="container form-group">
 <form action='' method="POST">
     {% csrf_token %}
     {%bootstrap_form user_form%}
     {% bootstrap_form contributor_form %}
 
-    {% for captcha in captcha_list %}
 
-    {% bootstrap_form captcha%}
+       {% for field in captcha_form %}
+        <div class="form-group{% if field.field.required %} required{% endif %}">
+            <label class="control-label">
+                {% bootstrap_label field.label %}
+            </label>
+        <div class="row">
+            <div class="col-md-4">
+        <audio controls>
+                <source src="{% static captcha_form.audio_file %}" type="audio/mpeg">
+        </audio>
+            </div>
+            <div class="col-md-8">
+                {% bootstrap_field field show_label=False form_group_class=None %}
+            </div>
+        </div>
+       {% endfor %}
 
-    {% load staticfiles %}
-    <audio controls>
-        <source src="{% static captcha.audio_file %}" type="audio/mpeg">
-    </audio>
-    {% endfor %}
   {% buttons %}
     <button type="submit" class="btn btn-primary">
         {% trans "Sign up" %}
     </button>
   {% endbuttons %}
-</form>
-</div>
 {% endblock %}

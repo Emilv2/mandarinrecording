@@ -6,8 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext_lazy as _
 from django.utils.html import format_html
 from .contributor import Contributor
+from django.conf import settings
 
-AUDIO_DIR = 'userregistration/static'
+AUDIO_DIR = 'userregistration/static/captcha_audio/'
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -79,7 +80,7 @@ def read_file():
     return a random filename from the audio directory
     """
     _, _, filenames = next(walk(AUDIO_DIR))
-    return random.choice(filenames)
+    return 'captcha_audio/' + random.choice(filenames)
 
 
 class AudioCaptchaForm(forms.Form):
@@ -88,20 +89,27 @@ class AudioCaptchaForm(forms.Form):
         super(AudioCaptchaForm, self).__init__(*args, **kwargs)
         self.audio_file = read_file()
 
-    pinyin = forms.CharField()
+    pinyin1 = forms.CharField()
+    pinyin2 = forms.CharField()
+    pinyin3 = forms.CharField()
+
+    def is_valid_pinyin(pinyin):
+        cleaned_data = self.cleaned_data[pinyin]\
+            .replace('0', '5')\
+            .replace(' ', '')
+        if cleaned_data == PINYIN_LIST[int(self.audio_file.split('.')[0])]:
+            return True
+        else:
+            return False
 
     def is_valid(self):
         is_valid = super(AudioCaptchaForm, self).is_valid()
         if not is_valid:
             return False
         else:
-            pinyin = self.cleaned_data['pinyin']\
-                .replace('0', '5')\
-                .replace(' ', '')
-            if pinyin == PINYIN_LIST[int(self.audio_file.split('.')[0])]:
-                return True
-            else:
-                return False
+            return is_valid_pinyin('pinyin1')\
+                    and is_valid_pinyin('pinyin2')\
+                    and is_valid_pinyin('pinyin3')
 
 
 def create_base_syllables_list():

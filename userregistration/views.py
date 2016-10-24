@@ -10,18 +10,17 @@ from django.contrib.auth import views as auth_views
 def registration(request):
     user_form = CustomUserCreationForm(request.POST)
     contributor_form = ContributorCreationForm(request.POST)
-    captcha_list = [AudioCaptchaForm(request.POST) for i in range(3)]
+    captcha_form = AudioCaptchaForm(request.POST)
     csrf_token = {}
     csrf_token.update(csrf(request))
-    audio_files = ['audio_file.mp3', 'audio_file.mp3', 'audio_file.mp3']
     context = {'user_form': user_form,
                'contributor_form': contributor_form,
-               'captcha_list': captcha_list,
-               'audio_files': audio_files}
+               'captcha_form': captcha_form,
+               }
 
     if request.method == 'POST':
-        if all((user_form.is_valid(), contributor_form.is_valid())) and \
-                all(i.is_valid() for i in captcha_list):
+        if all(user_form.is_valid(), contributor_form.is_valid() and \
+                captcha_form.is_valid()):
             user = user_form.save()
             contributor = contributor_form.save(commit=False)
             contributor.user = user
@@ -37,13 +36,12 @@ def registration(request):
     else:
         user_form = CustomUserCreationForm()
         contributor_form = ContributorCreationForm()
-        captcha_list = [AudioCaptchaForm() for i in range(3)]
+        captcha_form = AudioCaptchaForm()
 
-        audio_files = ['audio_file.mp3', 'audio_file.mp3', 'audio_file.mp3']
         context = {'user_form': user_form,
                    'contributor_form': contributor_form,
-                   'captcha_list': captcha_list,
-                   'audio_files': audio_files}
+                   'captcha_form': captcha_form,
+                   }
         # TODO
         return render(request, 'registration.html', context)
 
