@@ -13,11 +13,13 @@ AUDIO_DIR = 'userregistration/static'
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(
             max_length=30,
-            label=_('First Name')
+            label=_('First Name'),
+            required=False,
             )
     last_name = forms.CharField(
             max_length=30,
-            label=_('Last Name')
+            label=_('Last Name'),
+            required=False,
             )
 
     username = forms.EmailField(
