@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('userregistration.urls')),
     url(r'^recording/', include('recording.urls')),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]

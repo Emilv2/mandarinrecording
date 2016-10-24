@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from django.utils.translation import ugettext_lazy as _
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
@@ -128,6 +129,10 @@ USE_TZ = True
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale'),]
 
+LANGUAGES = [
+    ('zh-hans', _('Chinese')),
+    ('en', _('English')),
+]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
