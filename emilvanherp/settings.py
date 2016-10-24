@@ -132,3 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+BOOTSTRAP3 = {
+        'base_url': os.path.join(STATIC_URL, 'bootstrap3/'),
+        }
