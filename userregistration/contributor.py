@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class Contributor(models.Model):
@@ -9,9 +10,9 @@ class Contributor(models.Model):
     FEMALE = 'F'
     NO_ANSWER = 'N'
     SEX_CHOISES = (
-        (MALE, 'Male'),
-        (FEMALE, 'Female'),
-        (NO_ANSWER, 'No answer'))
+        (MALE, _('Male')),
+        (FEMALE, _('Female')),
+        (NO_ANSWER, _('No answer')))
     sex = models.CharField(
         max_length=1,
         choices=SEX_CHOISES)

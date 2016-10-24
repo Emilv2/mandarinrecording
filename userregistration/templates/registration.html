@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load bootstrap3 %}
+{% load i18n %}
 {% bootstrap_css %}
 
 <div class="container">
@@ -20,7 +21,7 @@
     {% endfor %}
   {% buttons %}
     <button type="submit" class="btn btn-primary">
-      {% bootstrap_icon "ok-sign" %} Sign up
+        {% trans "Sign up" %}
     </button>
   {% endbuttons %}
 </form>

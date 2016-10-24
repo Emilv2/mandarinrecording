@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% load i18n %}
 {% load bootstrap3 %}
 {% bootstrap_css %}
 
@@ -11,13 +12,13 @@
 
   {% buttons %}
     <button type="submit" class="btn btn-primary">
-      Login
+        {% trans "Login" %}
     </button>
   {% endbuttons %}
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p><a href="{% url 'password_reset' %}">{% trans "Lost password?" %}</a></p>
     </div>
 {% endblock %}

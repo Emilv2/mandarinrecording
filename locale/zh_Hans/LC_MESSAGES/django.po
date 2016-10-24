@@ -1,0 +1,180 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-24 12:15+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: recording/templates/about.html:8 recording/templates/about.html:28
+#: recording/templates/recording.html:20
+msgid "Recording"
+msgstr ""
+
+#: recording/templates/about.html:9
+msgid "Idea"
+msgstr ""
+
+#: recording/templates/about.html:10
+msgid ""
+"\n"
+"    This project tries to collect as many recordings from native Mandarin\n"
+"    Chinese speakers. The main goal is to use these recordings to help\n"
+"    students learning Mandarin Chinese practice their tone recognition.\n"
+"    "
+msgstr ""
+
+#: recording/templates/about.html:15
+msgid "Practical"
+msgstr ""
+
+#: recording/templates/about.html:17
+msgid "Registration"
+msgstr ""
+
+#: recording/templates/about.html:18
+msgid ""
+"\n"
+"    You will need to register on the\n"
+"    <a href=\"/accounts/registration/\"> registration page</a>\n"
+"    and fill in\n"
+"    your information. If you do not want to give your real name, you can "
+"just\n"
+"    fill in an alias.<br>\n"
+"    If you want to participate in this project you will also need accept "
+"that\n"
+"    your recordings will be released under the Creative Commons CC BY-SA "
+"4.0\n"
+"    license, click on the link to find more information about the license.\n"
+"    "
+msgstr ""
+
+#: recording/templates/about.html:29
+msgid ""
+"\n"
+"    After registration you can go the recording page. there you will be "
+"shown\n"
+"    pinyin you can record using the record button. Click on the stop button\n"
+"    when you finish recording and press the play button to listen to your\n"
+"    recording. Restart your recording if necessary or click on the upload\n"
+"    button to upload your recording. Once the recording is uploaded a new\n"
+"    pinyin word to be recorded will appear.<br>\n"
+"    You can do as many recordings as you like, and come back any time to the "
+"recording\n"
+"    page to do more recordings.<br>\n"
+"    here is an example of some pinyin and the recordings:\n"
+"    "
+msgstr ""
+
+#: recording/templates/about.html:62
+msgid ""
+"\n"
+"    If you record multiple syllables at once, for example: \"mā rì pǐng\", "
+"try to\n"
+"    pronounce them as if it was one word. Any combination that has a meaning "
+"is\n"
+"    pure coincidence.\n"
+"    "
+msgstr ""
+
+#: recording/templates/recording.html:22
+msgid "Welcome"
+msgstr ""
+
+#: recording/templates/recording.html:23
+msgid ""
+"\n"
+"  Record the word by clicking on the \"record\" button and play it to check\n"
+"  if it is correct. You can restart your recording by clicking again on the\n"
+"  \"record\" button if you think you made a mistake. Click on the \"upload\" "
+"button\n"
+"  to upload your recording, a new word will appear when you do so.\n"
+"  "
+msgstr ""
+
+#: recording/templates/recording.html:29
+msgid ""
+"\n"
+"  You can make as many recordings as you like, and you can come back later\n"
+"  to this page to make more recordings.\n"
+"  "
+msgstr ""
+
+#: recording/templates/recording.html:33
+msgid ""
+"\n"
+"    Make sure you are using a recent version of Google Chrome.\n"
+"    "
+msgstr ""
+
+#: recording/templates/recording.html:36
+msgid "Next recording:"
+msgstr ""
+
+#: recording/templates/recording.html:37
+msgid "pinyin should be here"
+msgstr ""
+
+#: recording/templates/recording.html:38
+msgid "Recordings"
+msgstr ""
+
+#: recording/templates/recording.html:46
+msgid "'please listen to your recording before you upload it'"
+msgstr ""
+
+#: recording/templates/recording.html:49
+msgid "upload"
+msgstr ""
+
+#: recording/templates/recording.html:52
+msgid "record"
+msgstr ""
+
+#: recording/templates/recording.html:55
+msgid "stop"
+msgstr ""
+
+#: recording/templates/recording.html:113
+msgid "'No web audio support in this browser!'"
+msgstr ""
+
+#: userregistration/contributor.py:13
+msgid "Male"
+msgstr ""
+
+#: userregistration/contributor.py:14
+msgid "Female"
+msgstr ""
+
+#: userregistration/contributor.py:15
+msgid "No answer"
+msgstr ""
+
+#: userregistration/models.py:16
+msgid "First Name"
+msgstr ""
+
+#: userregistration/models.py:20
+msgid "e-mail address"
+msgstr ""
+
+#: userregistration/models.py:42
+msgid "I am..."
+msgstr "我的性别是……"
+
+#: userregistration/views.py:66
+msgid "Welcome to my site."
+msgstr ""

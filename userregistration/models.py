@@ -11,8 +11,14 @@ AUDIO_DIR = 'userregistration/static'
 
 
 class CustomUserCreationForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=30)
+    first_name = forms.CharField(
+            max_length=30,
+            label=_('First Name')
+            )
+    last_name = forms.CharField(
+            max_length=30,
+            label=_('Last Name')
+            )
 
     username = forms.EmailField(
         label=_("e-mail address"),
@@ -37,7 +43,7 @@ class ContributorCreationForm(forms.ModelForm):
         fields = ['sex', 'accepted_licence']
 
     sex = forms.ChoiceField(
-        choices=Contributor.SEX_CHOISES + ((None, 'Please select one'),)
+        choices=Contributor.SEX_CHOISES + ((None, _('I am...')),)
     )
 
     accepted_licence = forms.BooleanField(

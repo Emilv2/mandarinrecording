@@ -14,19 +14,33 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">{% trans "Mandarin Recording" %}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li {% if request.path == '/home/' %}class="active"{% endif %}><a href="home">Home</a></li>
-            <li {% if request.path == '/recording/about/' %}class="active"{% endif %}><a href="/recording/about/">About</a></li>
-            <li {% if request.path == '/contact/' %}class="active"{% endif %}><a href="/contact">Contact</a></li>
+            <li {% if request.path == '/home/' %}class="active"{% endif %}>
+                {% comment %}Translators: Webpage Home{% endcomment %}
+                <a href="home">{% trans "Home" %}</a>
+            </li>
+            <li {% if request.path == '/recording/about/' %}class="active"{% endif %}>
+                <a href="/recording/about/">{% trans "About" %}</a>
+            </li>
+            <li {% if request.path == '/contact/' %}class="active"{% endif %}>
+                <a href="/contact">{% trans "Contact" %}</a></li>
         {% if user.is_authenticated %}
-            <li><a href="/accounts/logout">Logout</a></li>
-            <li {% if request.path == '/recording/' %}class="active"{% endif %}><a href="/recording">Recording</a></li>
+            <li>
+                <a href="/accounts/logout">{% trans "Logout" %}</a>
+            </li>
+            <li {% if request.path == '/recording/' %}class="active"{% endif %}>
+                <a href="/recording">{% trans "Recording" %}</a>
+            </li>
         {% else %}
-            <li {% if request.path == '/accounts/login/' %}class="active"{% endif %}><a href="/accounts/login">Login</a></li>
-            <li {% if request.path == '/accounts/registration/' %}class="active"{% endif %}><a href="/accounts/registration">Register</a></li>
+            <li {% if request.path == '/accounts/login/' %}class="active"{% endif %}>
+                <a href="/accounts/login">{% trans "Login" %}</a>
+            </li>
+            <li {% if request.path == '/accounts/registration/' %}class="active"{% endif %}>
+                <a href="/accounts/registration">{% trans "Register" %}</a>
+            </li>
         {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
