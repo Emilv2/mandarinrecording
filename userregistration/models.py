@@ -43,13 +43,13 @@ class ContributorCreationForm(forms.ModelForm):
 
     class Meta:
         model = Contributor
-        fields = ['sex', 'accepted_licence']
+        fields = ['sex', 'accepted_license']
 
     sex = forms.ChoiceField(
         choices=Contributor.SEX_CHOISES + ((None, _('I am...')),)
     )
 
-    accepted_licence = forms.BooleanField(
+    accepted_license = forms.BooleanField(
         label=_(format_html(
                 "I accept that my contributions are released under the \
                  <a href='https://creativecommons.org/licenses/by-sa/4.0/'> \
