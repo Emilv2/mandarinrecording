@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+<head>
+    <div class="container">
+    <title> {%trans "Recording" %} </title>
+    <h1> {%trans "Idea" %} </h1>
+    <p> {% blocktrans %}
+    This project tries to collect as many recordings from native Mandarin
+    Chinese speakers. The main goal is to use these recordings to help
+    students learning Mandarin Chinese practice their tone recognition.
+    {% endblocktrans %} </p>
+    <h1> {%trans "Practical" %} </h1>
+    {% url 'userregistation' as userregistation %}
+    <h2> {%trans "Registration" %} </h2>
+    <p> {% blocktrans %}
+    You will need to register on the
+    <a href="/accounts/registration/"> registration page</a>
+    and fill in
+    your information. If you do not want to give your real name, you can just
+    fill in an alias.<br>
+    If you want to participate in this project you will also need accept that
+    your recordings will be released under the Creative Commons CC BY-SA 4.0
+    license, click on the link to find more information about the license.
+    {% endblocktrans %} </p>
+    <h2> {%trans "Recording" %} </h2>
+    <p> {% blocktrans %}
+    After registration you can go the recording page. there you will be shown
+    pinyin you can record using the record button. Click on the stop button
+    when you finish recording and press the play button to listen to your
+    recording. Restart your recording if necessary or click on the upload
+    button to upload your recording. Once the recording is uploaded a new
+    pinyin word to be recorded will appear.<br>
+    You can do as many recordings as you like, and come back any time to the recording
+    page to do more recordings.<br>
+    here is an example of some pinyin and the recordings:
+    {% endblocktrans %} </p>
+    <lu>
+    <li>
+        <p>{% trans "mā as in 妈 (first tone)" %}</p>
+        <audio controls=true></audio>
+    </li>
+    <li>
+        <p> {% trans "má as in 麻 (second tone)" %}</p>
+        <audio controls=true></audio>
+    </li>
+    <li>
+        <p>{% trans "mǎ as in 马 (third tone)" %}</p>
+        <audio controls=true></audio>
+    </li>
+    <li>
+        <p>{% trans "mà as in 骂 (forth tone)" %}</p>
+        <audio controls=true></audio>
+    </li>
+    <li>
+        <p>{% trans "ma as in 吗 (fifth/zeroth/no tone)" %}</p>
+        <audio controls=true></audio>
+    </li>
+    </lu>
+    <p> {% blocktrans %}
+    If you record multiple syllables at once, for example: "mā rì pǐng", try to
+    pronounce them as if it was one word. Any combination that has a meaning is
+    pure coincidence.
+    {% endblocktrans %} </p>
+    <li>
+        <p>mā rì pǐng</p>
+        <audio controls=true></audio>
+    </li>
+    </lu>
+    </div>
+
+
+</head>
+{% endblock %}
