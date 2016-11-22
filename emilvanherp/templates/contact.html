@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+<head>
+    <div class="container">
+    <title> {%trans "Contact" %} </title>
+    <h1> {%trans "Questions? Suggestions?" %} </h1>
+    <p> {% blocktrans %}
+        e-mail: emilvanherp@gmail.com </br>
+        wechat: emil643
+    {% endblocktrans %} </p>
+    </div>
+
+
+</head>
+{% endblock %}
