@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
-from userregistration.models import get_random_syllables, pretty_pinyin
+from registration.models import get_random_syllables, pretty_pinyin
 
 
 @login_required()

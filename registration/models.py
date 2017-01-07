@@ -8,7 +8,7 @@ from django.utils.html import format_html
 from .contributor import Contributor
 from django.conf import settings
 
-AUDIO_DIR = 'userregistration/static/captcha_audio/'
+AUDIO_DIR = 'registration/static/captcha_audio/'
 
 
 class CustomUserCreationForm(UserCreationForm):

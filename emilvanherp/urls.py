@@ -19,7 +19,7 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('userregistration.urls')),
+    url(r'^accounts/', include('registration.urls')),
     url(r'^recording/', include('recording.urls')),
     url(r'^contact/', views.contact, name='contact'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
