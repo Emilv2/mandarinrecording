@@ -80,7 +80,7 @@ def read_file():
     return a random filename from the audio directory
     """
     _, _, filenames = next(walk(AUDIO_DIR))
-    return 'captcha_audio/' + random.choice(filenames)
+    return random.choice(filenames)
 
 
 class AudioCaptchaForm(forms.Form):
@@ -93,7 +93,7 @@ class AudioCaptchaForm(forms.Form):
     pinyin2 = forms.CharField()
     pinyin3 = forms.CharField()
 
-    def is_valid_pinyin(pinyin):
+    def is_valid_pinyin(self, pinyin):
         cleaned_data = self.cleaned_data[pinyin]\
             .replace('0', '5')\
             .replace(' ', '')
@@ -107,9 +107,9 @@ class AudioCaptchaForm(forms.Form):
         if not is_valid:
             return False
         else:
-            return is_valid_pinyin('pinyin1')\
-                    and is_valid_pinyin('pinyin2')\
-                    and is_valid_pinyin('pinyin3')
+            return self.is_valid_pinyin('pinyin1')\
+                    and self.is_valid_pinyin('pinyin2')\
+                    and self.is_valid_pinyin('pinyin3')
 
 
 def create_base_syllables_list():

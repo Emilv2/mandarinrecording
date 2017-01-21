@@ -19,8 +19,8 @@ def registration(request):
                }
 
     if request.method == 'POST':
-        if all(user_form.is_valid(), contributor_form.is_valid() and \
-                captcha_form.is_valid()):
+        if all((user_form.is_valid(), contributor_form.is_valid() and \
+                captcha_form.is_valid())):
             user = user_form.save()
             contributor = contributor_form.save(commit=False)
             contributor.user = user
