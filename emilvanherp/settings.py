@@ -22,11 +22,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ion(6#ru3(m+yamj*tn5i+g@*i=vms603tjps@rb3zo@%*ltpr'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -143,3 +138,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 BOOTSTRAP3 = {
         'base_url': os.path.join(STATIC_URL, 'bootstrap3/'),
         }
+
+from emilvanherp.local_settings import *
