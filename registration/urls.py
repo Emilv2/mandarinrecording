@@ -13,7 +13,4 @@ urlpatterns = [url(r'^registration/',
                    auth_views.logout,
                    {'next_page': '/accounts/login'},
                    name='logout'),
-               url(r'^password_reset/',
-                   views.password_reset,
-                   name='password_reset'),
                ]

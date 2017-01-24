@@ -50,8 +50,3 @@ def login(request, *args, **kwargs):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/recording/')
     return auth_views.login(request, *args, **kwargs)
-
-
-# TODO
-def password_reset(request):
-    pass

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'registration',
     'recording',
+    'reset_password',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -138,5 +139,22 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 BOOTSTRAP3 = {
         'base_url': os.path.join(STATIC_URL, 'bootstrap3/'),
         }
+
+#email settings for password recovery
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'mandarinrecording@gmail.com'
+SERVER_EMAIL = 'mandarinrecording@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mandarinrecording@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+from django.contrib.messages import constants as message_constants
+
+MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
+                message_constants.INFO: 'info',
+                message_constants.SUCCESS: 'success',
+                message_constants.WARNING: 'warning',
+                message_constants.ERROR: 'danger',}
 
 from emilvanherp.local_settings import *

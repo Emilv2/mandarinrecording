@@ -4,7 +4,11 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Contributor(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+            User,
+            on_delete=models.CASCADE,
+            primary_key=True,
+            default=None)
 
     MALE = 'M'
     FEMALE = 'F'

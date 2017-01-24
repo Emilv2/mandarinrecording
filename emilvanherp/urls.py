@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from reset_password.views import ResetPasswordRequestView, PasswordResetConfirmView
 from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^reset_password/', include('reset_password.urls')),
     url(r'^accounts/', include('registration.urls')),
     url(r'^recording/', include('recording.urls')),
     url(r'^contact/', views.contact, name='contact'),
