@@ -5,6 +5,8 @@ from django.template.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AdminPasswordChangeForm
 
 
 def registration(request):
@@ -50,3 +52,18 @@ def login(request, *args, **kwargs):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/recording/')
     return auth_views.login(request, *args, **kwargs)
+
+@login_required()
+def change_password(request):
+
+    if request.method == 'POST':
+        form = AdminPasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            request.user.set_password(form.clean_password2())
+            return HttpResponseRedirect('/recording/')
+        else:
+            context = {'form': form }
+            return render(request, 'change_password.html', {'form': form })
+    else:
+        form = AdminPasswordChangeForm(user=request.user)
+        return render(request, 'change_password.html', {'form': form })

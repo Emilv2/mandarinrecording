@@ -13,4 +13,7 @@ urlpatterns = [url(r'^registration/',
                    auth_views.logout,
                    {'next_page': '/accounts/login'},
                    name='logout'),
+               url(r'change_password',
+                   views.change_password,
+                   name='change_password')
                ]
