@@ -151,6 +151,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 from django.contrib.messages import constants as message_constants
 
+LOGIN_REDIRECT_URL = '/recording/'
+
 MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
                 message_constants.INFO: 'info',
                 message_constants.SUCCESS: 'success',
