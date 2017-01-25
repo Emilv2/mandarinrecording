@@ -42,7 +42,6 @@ def write_audio_file(name, data):
 
 def get_next_syllable(request):
     syllable_list = request.user.contributor.get_base_syllables_list()
-    #import pdb; pdb.set_trace()
     if len(syllable_list) > 0:
         next_syllable = syllable_list[0]
     else:
