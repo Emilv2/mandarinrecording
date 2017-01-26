@@ -3,19 +3,13 @@
 {% block content %}
 {% load bootstrap3 %}
 {% bootstrap_css %}
-<head>
-    {#TODO necessary? #}
-    {% csrf_token %}
-
     <div class="container">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Live input record and playback</title>
+	<title>{% trans "Recording" %}</title>
   <style type='text/css'>
     ul { list-style: none; }
     #recordingslist audio { display: block; margin-bottom: 10px; }
   </style>
-</head>
-<body>
 
     <h1>{% trans "Recording" %}</h1>
 
@@ -40,10 +34,10 @@
     <h2>{% trans "Recordings" %}</h2>
   <ul id="recordingslist2">
       <li>
-          {% buttons %}
           <audio id='audioElement' controls></audio>
           </li>
           <li>
+          {% buttons %}
           <button title=
       {% trans "'please listen to your recording before you upload it'" %}
               id='uploadButton'

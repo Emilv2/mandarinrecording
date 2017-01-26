@@ -4,7 +4,7 @@
 {% load i18n %}
 {% load staticfiles %}
 {% bootstrap_css %}
-<link rel="stylesheet" href="/static/css/asterisk.css" />
+<link rel="stylesheet" href="/static/css/asterisk.css"/>
 <div class="container form-group">
 <form action='' method="POST">
        {% for field in user_form %}
@@ -51,11 +51,14 @@
                 {% bootstrap_field field show_label=False form_group_class=None %}
             </div>
         </div>
-       {% endfor %}
+        </div>
+        {% endfor %}
+        </form>
 
   {% buttons %}
     <button type="submit" class="btn btn-primary">
         {% trans "Sign up" %}
     </button>
+    </div>
   {% endbuttons %}
 {% endblock %}
