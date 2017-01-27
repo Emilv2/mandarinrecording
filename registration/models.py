@@ -7,8 +7,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.html import format_html
 from .contributor import Contributor
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
-AUDIO_DIR = 'registration/static/captcha_audio/'
+REL_AUDIO_DIR = 'captcha_audio/'
+AUDIO_DIR = 'registration/static/' + REL_AUDIO_DIR
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -89,6 +91,8 @@ class AudioCaptchaForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(AudioCaptchaForm, self).__init__(*args, **kwargs)
         self.audio_file = read_file()
+        print(self.audio_file)
+        self.audio_path = REL_AUDIO_DIR + self.audio_file
 
     pinyin1 = forms.CharField()
     pinyin2 = forms.CharField()
@@ -112,6 +116,24 @@ class AudioCaptchaForm(forms.Form):
                     and self.is_valid_pinyin('pinyin2')\
                     and self.is_valid_pinyin('pinyin3')
 
+    def clean_pinyin(self, pinyin):
+        if self.is_valid_pinyin(pinyin):
+            return pinyin
+        else:
+            raise ValidationError(
+                _('Wrong pinyin, please try again.'
+                  ' Tones must be included (i.e., write ma1 if you hear 妈,'
+                  ' ma5 if you hear 吗).'),
+                code='invalid_pinyin')
+
+    def clean_pinyin1(self):
+        return self.clean_pinyin('pinyin1')
+
+    def clean_pinyin2(self):
+        return self.clean_pinyin('pinyin2')
+
+    def clean_pinyin3(self):
+        return self.clean_pinyin('pinyin3')
 
 def create_base_syllables_list():
     with open('syllables_without_tones_short_list', 'r') as text_file:
