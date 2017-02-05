@@ -11,19 +11,23 @@ from django.core.exceptions import ValidationError
 
 REL_AUDIO_DIR = 'captcha_audio/'
 AUDIO_DIR = 'registration/static/' + REL_AUDIO_DIR
+HELP_TEXT = _('Used for attribution, can be an alias, if left blank e-mail will be used for attribution.')
 
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(
             max_length=30,
-            label=_('First Name'),
+            label=_('First Name (optional)'),
+            help_text=HELP_TEXT,
             required=False,
             )
     last_name = forms.CharField(
             max_length=30,
-            label=_('Last Name'),
+            label=_('Last Name (optional)'),
+            help_text=HELP_TEXT,
             required=False,
             )
+
 
     username = forms.EmailField(
         label=_("e-mail address"),
