@@ -7,9 +7,12 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AdminPasswordChangeForm
+from django.core.urlresolvers import reverse
 
 
 def registration(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('recording'))
     user_form = CustomUserCreationForm(request.POST)
     contributor_form = ContributorCreationForm(request.POST)
     captcha_form = AudioCaptchaForm(request.POST)
