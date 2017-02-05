@@ -102,7 +102,7 @@
     try {
       // webkit shim
       window.AudioContext = window.AudioContext || window.webkitAudioContext;
-      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+      navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || MediaDevices.webkitGetUserMedia || MediaDevices.mozGetUserMedia;
       window.URL = window.URL || window.webkitURL;
       audio_context = new AudioContext;
     } catch (e) {
@@ -111,9 +111,11 @@
     uploadButton.disabled = true;
     stopButton.disabled = true;
     setNextSyllable();
-    navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
+    navigator.mediaDevices.getUserMedia({audio: true}).then(function(mediaStream) {
+    startUserMedia(mediaStream);
     });
-  };
+    }
+
 // Required for Django CSRF
 function getCookie(name) {
         var cookieValue = null;
