@@ -28,12 +28,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li {% if request.path == '/home/' %}class="active"{% endif %}>
-                {% comment %}Translators: Webpage Home{% endcomment %}
-                <a href="/home">{% trans "Home" %}</a>
-            </li>
             <li {% if request.path == '/recording/about/' %}class="active"{% endif %}>
-                <a href="/recording/about/">{% trans "About" %}</a>
+                {% comment %}Translators: Webpage Home{% endcomment %}
+                <a href="/recording/about/">{% trans "Home" %}</a>
             </li>
             <li {% if request.path == '/contact/' %}class="active"{% endif %}>
                 <a href="/contact">{% trans "Contact" %}</a></li>
