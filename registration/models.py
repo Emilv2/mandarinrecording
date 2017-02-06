@@ -103,10 +103,10 @@ class AudioCaptchaForm(forms.Form):
     pinyin3 = forms.CharField()
 
     def is_valid_pinyin(self, pinyin):
-        cleaned_data = self.cleaned_data[pinyin]\
+        data = self.data[pinyin]\
             .replace('0', '5')\
             .replace(' ', '')
-        if cleaned_data == PINYIN_LIST[int(self.audio_file.split('.')[0])]:
+        if data == PINYIN_LIST[int(self.audio_file.split('.')[0])]:
             return True
         else:
             return False
