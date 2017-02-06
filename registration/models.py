@@ -140,7 +140,7 @@ class AudioCaptchaForm(forms.Form):
         return self.clean_pinyin('pinyin3')
 
 def create_base_syllables_list():
-    with open('syllables_without_tones_short_list', 'r') as text_file:
+    with open('registration/syllables_without_tones_short_list', 'r') as text_file:
         syllables = [line.strip('\n') for line in text_file.readlines()]
         selection1 = random.sample(syllables, 4)
         selection2 = [random.choice(syllables) for i in range(4)]
@@ -157,7 +157,7 @@ def create_base_syllables_list():
 
 
 def get_random_syllables():
-    with open('syllables_with_tones', 'r') as text_file:
+    with open('registration/syllables_with_tones', 'r') as text_file:
         syllables = [line.strip('\n') for line in text_file.readlines()]
         length = random.randint(1, 4)
         while True:
