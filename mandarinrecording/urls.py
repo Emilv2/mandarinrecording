@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from reset_password.views import ResetPasswordRequestView, PasswordResetConfirmView
+from django.views.generic import RedirectView
+from django.core.urlresolvers import reverse_lazy
 from . import views
 
 urlpatterns = [
@@ -25,4 +27,5 @@ urlpatterns = [
     url(r'^recording/', include('recording.urls')),
     url(r'^contact/', views.contact, name='contact'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('about'))),
 ]
