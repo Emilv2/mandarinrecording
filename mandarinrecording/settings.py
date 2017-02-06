@@ -160,3 +160,10 @@ MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
                 message_constants.ERROR: 'danger',}
 
 from mandarinrecording.local_settings import *
+# local settings variables are:
+# EMAIL_HOST_PASSWORD
+# SECRET_KEY
+
+# optional
+# ALLOWED HOSTS
+# DEBUG
