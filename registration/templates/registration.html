@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+mandarinrecording/{% extends "base.html" %}
 {% block content %}
 {% load bootstrap3 %}
 {% load i18n %}
 {% load staticfiles %}
 {% bootstrap_css %}
-<link rel="stylesheet" href="/static/css/asterisk.css"/>
+<link rel="stylesheet" href="{$ static 'registration/css/asterisk.css' %}"/>
 <div class="container form-group">
 <form action='' method="POST">
        {% for field in user_form %}

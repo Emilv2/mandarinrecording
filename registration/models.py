@@ -9,8 +9,8 @@ from .contributor import Contributor
 from django.conf import settings
 from django.core.exceptions import ValidationError
 
-REL_AUDIO_DIR = 'captcha_audio/'
-AUDIO_DIR = 'registration/static/' + REL_AUDIO_DIR
+STATIC_AUDIO_DIR = 'registration/captcha_audio/'
+AUDIO_DIR = 'registration/static/registration/captcha_audio/'
 HELP_TEXT = _('Used for attribution, can be an alias, if left blank e-mail will be used for attribution.')
 
 
@@ -86,6 +86,7 @@ def read_file():
     """
     return a random filename from the audio directory
     """
+    import pdb; pdb.set_trace()
     _, _, filenames = next(walk(AUDIO_DIR))
     return random.choice(filenames)
 
@@ -96,7 +97,7 @@ class AudioCaptchaForm(forms.Form):
         super(AudioCaptchaForm, self).__init__(*args, **kwargs)
         self.audio_file = read_file()
         print(self.audio_file)
-        self.audio_path = REL_AUDIO_DIR + self.audio_file
+        self.audio_path = STATIC_AUDIO_DIR + self.audio_file
 
     pinyin1 = forms.CharField()
     pinyin2 = forms.CharField()

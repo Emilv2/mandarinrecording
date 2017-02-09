@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from registration.models import get_random_syllables, pretty_pinyin
 
+RECORDING_DIR = 'userrecordings'
 
 @login_required()
 def recording(request):
@@ -33,7 +34,7 @@ def write_audio_file(name, data):
     while True:
         try:
             filename = "{}_{}.wav".format(name, str(i).zfill(3))
-            with open(filename, 'xb') as audio_file:
+            with open(RECORDING_DIR + '/' + filename, 'xb') as audio_file:
                 audio_file.write(data)
             break
         except FileExistsError:

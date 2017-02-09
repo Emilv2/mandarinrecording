@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
+    'mandarinrecording',
     'registration',
     'recording',
     'reset_password',
@@ -137,7 +138,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 BOOTSTRAP3 = {
-        'base_url': os.path.join(STATIC_URL, 'bootstrap3/'),
+        'base_url': os.path.join(STATIC_URL, 'mandarinrecording/bootstrap3/'),
         }
 
 #email settings for password recovery
