@@ -9,8 +9,6 @@ from .contributor import Contributor
 from django.conf import settings
 from django.core.exceptions import ValidationError
 
-STATIC_AUDIO_DIR = 'registration/captcha_audio/'
-AUDIO_DIR = 'registration/static/registration/captcha_audio/'
 HELP_TEXT = _('Used for attribution, can be an alias, if left blank e-mail will be used for attribution.')
 
 
@@ -72,32 +70,15 @@ class ContributorCreationForm(forms.ModelForm):
             contributor.save()
         return contributor
 
-# PINYIN_LIST = ['ai1','ai2','ai3','ai4','ai5',
-#         'ma1','ma2','ma3','ma4','ma5',
-#         'ma1','ma2','ma3','ma4','ma5',
-#         'ma1','ma2','ma3','ma4','ma5',
-#         'ma1','ma2','ma3','ma4','ma5',
-#         'wo1','wo2','wo3','wo4','wo5',
-#         ]
-PINYIN_LIST = ['ai1']
-
-
-def read_file():
-    """
-    return a random filename from the audio directory
-    """
-    import pdb; pdb.set_trace()
-    _, _, filenames = next(walk(AUDIO_DIR))
-    return random.choice(filenames)
-
+PINYIN_DICT = {'pinyin1':'ai1',
+               'pinyin2':'wo4',
+               'pinyin3':'ma2',
+              }
 
 class AudioCaptchaForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(AudioCaptchaForm, self).__init__(*args, **kwargs)
-        self.audio_file = read_file()
-        print(self.audio_file)
-        self.audio_path = STATIC_AUDIO_DIR + self.audio_file
 
     pinyin1 = forms.CharField()
     pinyin2 = forms.CharField()
@@ -107,7 +88,7 @@ class AudioCaptchaForm(forms.Form):
         data = self.data[pinyin]\
             .replace('0', '5')\
             .replace(' ', '')
-        if data == PINYIN_LIST[int(self.audio_file.split('.')[0])]:
+        if data == PINYIN_DICT[pinyin]:
             return True
         else:
             return False

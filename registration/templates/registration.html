@@ -36,23 +36,56 @@ mandarinrecording/{% extends "base.html" %}
         </div>
 
 
-       {% for field in captcha_form %}
         <div class="form-group{% if field.field.required %} required{% endif %}">
             <label class="control-label">
-                {% bootstrap_label field.label %}
+                {% bootstrap_label captcha_form.pinyin1.label %}
             </label>
         <div class="row">
             <div class="col-md-4">
         <audio controls>
-                <source src="{% static captcha_form.audio_path %}" type="audio/mpeg">
+                <source src="{% static 'registration/captcha_audio/000.mp3' %}" type="audio/mpeg">
         </audio>
             </div>
             <div class="col-md-8">
-                {% bootstrap_field field show_label=False form_group_class=None %}
+                {% bootstrap_field captcha_form.pinyin1 show_label=False %}
+            </div>
             </div>
         </div>
+        <div class="form-group{% if field.field.required %} required{% endif %}">
+            <label class="control-label">
+                {% bootstrap_label captcha_form.pinyin2.label %}
+            </label>
+        <div class="row">
+            <div class="col-md-4">
+        <audio controls>
+                <source src="{% static 'registration/captcha_audio/001.mp3' %}" type="audio/mpeg">
+        </audio>
+            </div>
+            <div class="col-md-8">
+                {% bootstrap_field captcha_form.pinyin2 show_label=False %}
+            </div>
+            </div>
         </div>
-        {% endfor %}
+        <div class="form-group{% if field.field.required %} required{% endif %}">
+            <label class="control-label">
+                {% bootstrap_label captcha_form.pinyin3.label %}
+            </label>
+        <div class="row">
+            <div class="col-md-4">
+        <audio controls>
+                <source src="{% static 'registration/captcha_audio/002.mp3' %}" type="audio/mpeg">
+        </audio>
+            </div>
+            <div class="col-md-8">
+                {% bootstrap_field captcha_form.pinyin3 show_label=False %}
+            </div>
+            </div>
+        </div>
+
+
+
+
+        </div>
 
   {% buttons %}
     <button type="submit" class="btn btn-primary">
