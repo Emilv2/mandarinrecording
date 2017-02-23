@@ -4,6 +4,7 @@ from .models import ContributorCreationForm, CustomUserCreationForm, \
 from django.template.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AdminPasswordChangeForm
@@ -34,7 +35,7 @@ def registration(request):
                 username=user_form.cleaned_data['username'],
                 password=user_form.cleaned_data['password1'],
             )
-            login(request, contributor)
+            auth_login(request, contributor)
             return HttpResponseRedirect('/recording/')
         else:
             return render(request, 'registration.html', context)
