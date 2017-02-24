@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-24 15:22+0800\n"
+"POT-Creation-Date: 2017-02-24 18:37+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,8 +40,8 @@ msgstr ""
 msgid "Contact"
 msgstr "联系"
 
-#: mandarinrecording/templates/base.html:42 recording/templates/about.html:8
-#: recording/templates/about.html:31 recording/templates/recording.html:8
+#: mandarinrecording/templates/base.html:42 recording/templates/about.html:9
+#: recording/templates/about.html:32 recording/templates/recording.html:8
 #: recording/templates/recording.html:14
 msgid "Recording"
 msgstr "录音"
@@ -86,11 +86,11 @@ msgstr ""
 "        网站源代码： https://github.com/Emilv2/mandarinrecording\n"
 "    "
 
-#: recording/templates/about.html:9
+#: recording/templates/about.html:10
 msgid "Summary"
 msgstr "引言"
 
-#: recording/templates/about.html:10
+#: recording/templates/about.html:11
 msgid ""
 "\n"
 "        The goal of this project is to collect as many recordings from "
@@ -103,15 +103,15 @@ msgstr ""
 "    这个项目的目标是收集来自母语的中国人的录音。    这些录音将用来帮助学生学"
 "练习识别普通话声调。"
 
-#: recording/templates/about.html:14
+#: recording/templates/about.html:15
 msgid "Practical"
 msgstr "实用"
 
-#: recording/templates/about.html:16
+#: recording/templates/about.html:17
 msgid "Registration"
 msgstr "注册"
 
-#: recording/templates/about.html:17
+#: recording/templates/about.html:18
 msgid ""
 "\n"
 "    You will need to register on the\n"
@@ -139,7 +139,7 @@ msgstr ""
 "creativecommons.org/licenses/by-sa/4.0/deed.zh_TW'>    Creative Commons CC "
 "BY-SA 4.0 许可证</a>    点击链接找到有关许可证的更多信息"
 
-#: recording/templates/about.html:32
+#: recording/templates/about.html:33
 msgid ""
 "\n"
 "    After registration you can go the recording page. There you will be "
@@ -159,30 +159,30 @@ msgstr ""
 "    注册后你可以去录音页。    在那里你会看到拼音你可以记录使用记录按钮    "
 "点    击停止按钮，当你完成录音，按播放按钮，听你的录音。    如有必要重新启动"
 "录音或    点击上传按钮上传您的录音。    录制后上传一个新的拼音单词将被记录。 "
-"<br>    你可以做尽可能多的录音，你可以回来后，本页作出更多的录音。。<br>    "
+"<br>    你可以做尽可能多的录音，你可以回来后，本页作出更多的录音。<br>    "
 "接下来一些    拼音和录音的例子："
 
-#: recording/templates/about.html:45
+#: recording/templates/about.html:46
 msgid "mā as in 妈 (first tone)"
 msgstr "妈的mā（一声）"
 
-#: recording/templates/about.html:49
+#: recording/templates/about.html:52
 msgid "má as in 麻 (second tone)"
 msgstr "麻的má（二声）"
 
-#: recording/templates/about.html:53
+#: recording/templates/about.html:58
 msgid "mǎ as in 马 (third tone)"
 msgstr "马的mǎ（三声）"
 
-#: recording/templates/about.html:57
+#: recording/templates/about.html:64
 msgid "mà as in 骂 (forth tone)"
 msgstr "骂的mà（四声）"
 
-#: recording/templates/about.html:61
+#: recording/templates/about.html:70
 msgid "ma as in 吗 (fifth/zeroth/no tone)"
 msgstr "吗的ma（轻声）"
 
-#: recording/templates/about.html:65
+#: recording/templates/about.html:76
 msgid ""
 "\n"
 "    If you record multiple syllables at once, for example: \"mā rì pǐng\", "
@@ -196,6 +196,42 @@ msgstr ""
 "    如果你同时记录多个音节，例如：\"mā rì pǐng\"，试着把它们当作一个单词来发"
 "音。    任何有意义的组合纯属巧合。"
 
+#: recording/templates/about.html:85
+msgid "Terms of Use"
+msgstr "使用条款"
+
+#: recording/templates/about.html:90
+msgid ""
+"\n"
+"        The audio recordings used on this website are licensed under a\n"
+"        <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-"
+"sa/4.0/\">\n"
+"            Creative Commons Attribution-ShareAlike 4.0 International "
+"License</a>. They are attributed to Bankey Kung and 张丹.<br>\n"
+"        "
+msgstr ""
+"\n"
+" 本网站所使用的录音采用知"
+
+"        <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-"
+"sa/4.0/\">\n"
+"            知识共享署名 4.0 国际许可协议 "
+"</a>。 它们属于Bankey Kung，张丹。 <br>\n"
+"        "
+
+#: recording/templates/about.html:98
+msgid ""
+"\n"
+"        This website is licensed under a\n"
+"        <a rel=\"license\" href=\"https://www.gnu.org/licenses/agpl.html\">\n"
+"            GNU Affero General Public License</a>.\n"
+"        "
+msgstr ""
+"\n"
+"        本网站采用\n"
+"        <a rel=\"license\" href=\"https://www.gnu.org/licenses/agpl.html\">\n"
+"            GNU Affero通用公共许可证</a>。\n"
+"        "
 #: recording/templates/recording.html:16
 #, python-format
 msgid ""
@@ -391,5 +427,5 @@ msgstr "感谢使用我们的网站！"
 
 #: reset_password/templates/password_reset_email.html:12
 #, python-format
-msgid "The %(site_name)s team"
-msgstr "%(site_name)s团队"
+msgid "The Mandarinrecording team"
+msgstr "普通话录音团队"

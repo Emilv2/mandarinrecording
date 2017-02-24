@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 {% block content %}
 {% load bootstrap3 %}
 {% bootstrap_css %}
@@ -43,23 +44,33 @@
     <lu>
     <li>
         <p>{% trans "mā as in 妈 (first tone)" %}</p>
-        <audio controls=true></audio>
+        <audio controls=true>
+            <source src="{% static 'recording/audio/ma1.mp3' %}" type="audio/mpeg">
+        </audio>
     </li>
     <li>
         <p> {% trans "má as in 麻 (second tone)" %}</p>
-        <audio controls=true></audio>
+        <audio controls=true>
+            <source src="{% static 'recording/audio/ma2.mp3' %}" type="audio/mpeg">
+        </audio>
     </li>
     <li>
         <p>{% trans "mǎ as in 马 (third tone)" %}</p>
-        <audio controls=true></audio>
+        <audio controls=true>
+            <source src="{% static 'recording/audio/ma3.mp3' %}" type="audio/mpeg">
+        </audio>
     </li>
     <li>
         <p>{% trans "mà as in 骂 (forth tone)" %}</p>
-        <audio controls=true></audio>
+        <audio controls=true>
+            <source src="{% static 'recording/audio/ma4.mp3' %}" type="audio/mpeg">
+        </audio>
     </li>
     <li>
         <p>{% trans "ma as in 吗 (fifth/zeroth/no tone)" %}</p>
-        <audio controls=true></audio>
+        <audio controls=true>
+            <source src="{% static 'recording/audio/ma5.mp3' %}" type="audio/mpeg">
+        </audio>
     </li>
     </lu>
     <p> {% blocktrans %}
@@ -71,5 +82,24 @@
         <p>mā rì pǐng</p>
         <audio controls=true></audio>
     </li>
+    <h2> {%trans "Terms of Use" %} </h2>
+    <p>
+        <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+        </a><br>
+        {% blocktrans %}
+        The audio recordings used on this website are licensed under a
+        <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+            Creative Commons Attribution-ShareAlike 4.0 International License</a>. They are attributed to Bankey Kung and 张丹.<br>
+        {% endblocktrans %}
+        <a rel="license" href="https://www.gnu.org/licenses/agpl.html">
+            <img alt="GNU Affero General Public License" style="border-width:0" src= {% static "recording/img/agplv3-88x31.png" %} />
+        </a><br>
+        {% blocktrans %}
+        This website is licensed under a
+        <a rel="license" href="https://www.gnu.org/licenses/agpl.html">
+            GNU Affero General Public License</a>.
+        {% endblocktrans %}
+    </p>
     </div>
 {% endblock %}
