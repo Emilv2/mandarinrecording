@@ -149,12 +149,16 @@ def get_random_syllables():
     with open('registration/syllables_with_tones', 'r') as text_file:
         syllables = [line.strip('\n') for line in text_file.readlines()]
         length = random.randint(1, 4)
-        while True:
-            selection = random.choice(syllables)
-            if selection[-1] != '5':
-                break
+        selection = random.choice(syllables)
         for i in range(length - 1):
-            selection += '_' + random.choice(syllables)
+            if selection[-1] == '3':
+                while True:
+                    next = random.choice(syllables)
+                    if next[-1] != '3':
+                        break
+            else:
+                next = random.choice(syllables)
+            selection += '_' + next
         return selection
 
 
