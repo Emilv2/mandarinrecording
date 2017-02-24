@@ -28,7 +28,8 @@ mandarinrecording/{% extends "base.html" %}
         </div>
         <div class="form-group{% if contributor_form.accepted_license.field.required %} required{% endif %}">
             <label class="control-label">
-                {% bootstrap_label "Accept license" %}
+                {% trans "Accept License" as accept_license %}
+                {% bootstrap_label accept_license %}
             </label>
             <div class="">
                 {% bootstrap_field contributor_form.accepted_license show_label=False %}

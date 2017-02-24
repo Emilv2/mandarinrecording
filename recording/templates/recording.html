@@ -14,7 +14,7 @@
     <h1>{% trans "Recording" %}</h1>
 
     <h2>{% blocktrans with first_name=user.first_name last_name=user.last_name %}
-        Welcome {{ last_name }} {{ first_name }}!
+        Welcome {{ first_name }} {{ last_name }}!
         {% endblocktrans %}</h2>
     <p> {% blocktrans %}
   Record the word by clicking on the "record" button and play it to check

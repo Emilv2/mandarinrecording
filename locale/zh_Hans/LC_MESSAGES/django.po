@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-24 12:15+0800\n"
+"POT-Creation-Date: 2017-02-24 15:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,53 +18,131 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: recording/templates/about.html:8 recording/templates/about.html:28
-#: recording/templates/recording.html:20
-msgid "Recording"
+#: mandarinrecording/settings.py:130
+msgid "Chinese"
+msgstr "中文"
+
+#: mandarinrecording/settings.py:131
+msgid "English"
+msgstr "英语"
+
+#: mandarinrecording/templates/base.html:28
+msgid "Mandarin Recording"
+msgstr "普通话录音"
+
+#. Translators: Webpage Home
+#: mandarinrecording/templates/base.html:34
+msgid "Home"
 msgstr ""
 
-#: recording/templates/about.html:9
-msgid "Idea"
+#: mandarinrecording/templates/base.html:37
+#: mandarinrecording/templates/contact.html:7
+msgid "Contact"
+msgstr "联系"
+
+#: mandarinrecording/templates/base.html:42 recording/templates/about.html:8
+#: recording/templates/about.html:31 recording/templates/recording.html:8
+#: recording/templates/recording.html:14
+msgid "Recording"
+msgstr "录音"
+
+#: mandarinrecording/templates/base.html:52
+msgid "Logout"
+msgstr "退出"
+
+#: mandarinrecording/templates/base.html:55
+msgid "Change password"
+msgstr "更新密码"
+
+#: mandarinrecording/templates/base.html:64
+#: registration/templates/login.html:15
+#: registration/templates/registration/login.html:15
+msgid "Login"
+msgstr "登录"
+
+#: mandarinrecording/templates/base.html:67
+msgid "Register"
+msgstr "注册"
+
+#: mandarinrecording/templates/base.html:88
+msgid "Go"
 msgstr ""
+
+#: mandarinrecording/templates/contact.html:8
+msgid "Questions? Suggestions?"
+msgstr "有问题吗？有建议吗？"
+
+#: mandarinrecording/templates/contact.html:9
+msgid ""
+"\n"
+"        e-mail: emilvanherp@gmail.com <br>\n"
+"        wechat: emil643 <br>\n"
+"        website source: https://github.com/Emilv2/mandarinrecording\n"
+"    "
+msgstr ""
+"\n"
+"        电子邮件： emilvanherp@gmail.com <br>\n"
+"        微信： emil643 <br>\n"
+"        网站源代码： https://github.com/Emilv2/mandarinrecording\n"
+"    "
+
+#: recording/templates/about.html:9
+msgid "Summary"
+msgstr "引言"
 
 #: recording/templates/about.html:10
 msgid ""
 "\n"
-"    This project tries to collect as many recordings from native Mandarin\n"
-"    Chinese speakers. The main goal is to use these recordings to help\n"
-"    students learning Mandarin Chinese practice their tone recognition.\n"
+"        The goal of this project is to collect as many recordings from "
+"native Mandarin Chinese speakers.\n"
+"        These recordings will be used to help students learning Mandarin "
+"Chinese practice their tone recognition.\n"
 "    "
 msgstr ""
+"\n"
+"    这个项目的目标是收集来自母语的中国人的录音。    这些录音将用来帮助学生学"
+"练习识别普通话声调。"
 
-#: recording/templates/about.html:15
+#: recording/templates/about.html:14
 msgid "Practical"
-msgstr ""
+msgstr "实用"
+
+#: recording/templates/about.html:16
+msgid "Registration"
+msgstr "注册"
 
 #: recording/templates/about.html:17
-msgid "Registration"
-msgstr ""
-
-#: recording/templates/about.html:18
 msgid ""
 "\n"
 "    You will need to register on the\n"
 "    <a href=\"/accounts/registration/\"> registration page</a>\n"
 "    and fill in\n"
-"    your information. If you do not want to give your real name, you can "
-"just\n"
+"    your information. <br>\n"
+"    Your name will only be used for attribution,\n"
+"    If you do not want to give your real name you can just\n"
 "    fill in an alias.<br>\n"
+"    If you do not fill in any name your e-mail address will be used for "
+"attribution.<br>\n"
 "    If you want to participate in this project you will also need accept "
 "that\n"
-"    your recordings will be released under the Creative Commons CC BY-SA "
-"4.0\n"
-"    license, click on the link to find more information about the license.\n"
+"    your recordings will be released under the\n"
+"    <a href='https://creativecommons.org/licenses/by-sa/4.0/'>Creative "
+"Commons CC BY-SA 4.0 license</a>,\n"
+"    click on the link to find more information about the license.\n"
 "    "
 msgstr ""
+"\n"
+"    你将需要登记的<a href=\"/accounts/registration/\">注册页面</a>，填写您的"
+"信息。    你的名字将只用进行署名。如果你不想给自己的真名，你可以只填写一个假"
+"名。     如果您不填写任何名称，您的电子邮件地址将被用于领属关系。     如果你"
+"想参加这个项目，你也需要接受，你的录音将根据创意发布    <a href='https://"
+"creativecommons.org/licenses/by-sa/4.0/deed.zh_TW'>    Creative Commons CC "
+"BY-SA 4.0 许可证</a>    点击链接找到有关许可证的更多信息"
 
-#: recording/templates/about.html:29
+#: recording/templates/about.html:32
 msgid ""
 "\n"
-"    After registration you can go the recording page. there you will be "
+"    After registration you can go the recording page. There you will be "
 "shown\n"
 "    pinyin you can record using the record button. Click on the stop button\n"
 "    when you finish recording and press the play button to listen to your\n"
@@ -77,8 +155,34 @@ msgid ""
 "    here is an example of some pinyin and the recordings:\n"
 "    "
 msgstr ""
+"\n"
+"    注册后你可以去录音页。    在那里你会看到拼音你可以记录使用记录按钮    "
+"点    击停止按钮，当你完成录音，按播放按钮，听你的录音。    如有必要重新启动"
+"录音或    点击上传按钮上传您的录音。    录制后上传一个新的拼音单词将被记录。 "
+"<br>    你可以做尽可能多的录音，你可以回来后，本页作出更多的录音。。<br>    "
+"接下来一些    拼音和录音的例子："
 
-#: recording/templates/about.html:62
+#: recording/templates/about.html:45
+msgid "mā as in 妈 (first tone)"
+msgstr "妈的mā（一声）"
+
+#: recording/templates/about.html:49
+msgid "má as in 麻 (second tone)"
+msgstr "麻的má（二声）"
+
+#: recording/templates/about.html:53
+msgid "mǎ as in 马 (third tone)"
+msgstr "马的mǎ（三声）"
+
+#: recording/templates/about.html:57
+msgid "mà as in 骂 (forth tone)"
+msgstr "骂的mà（四声）"
+
+#: recording/templates/about.html:61
+msgid "ma as in 吗 (fifth/zeroth/no tone)"
+msgstr "吗的ma（轻声）"
+
+#: recording/templates/about.html:65
 msgid ""
 "\n"
 "    If you record multiple syllables at once, for example: \"mā rì pǐng\", "
@@ -88,12 +192,21 @@ msgid ""
 "    pure coincidence.\n"
 "    "
 msgstr ""
+"\n"
+"    如果你同时记录多个音节，例如：\"mā rì pǐng\"，试着把它们当作一个单词来发"
+"音。    任何有意义的组合纯属巧合。"
 
-#: recording/templates/recording.html:22
-msgid "Welcome"
+#: recording/templates/recording.html:16
+#, python-format
+msgid ""
+"\n"
+"        Welcome %(first_name)s %(last_name)s!\n"
+"        "
 msgstr ""
+"\n"
+"    欢迎光临%(last_name)s%(first_name)s！"
 
-#: recording/templates/recording.html:23
+#: recording/templates/recording.html:19
 msgid ""
 "\n"
 "  Record the word by clicking on the \"record\" button and play it to check\n"
@@ -103,78 +216,180 @@ msgid ""
 "  to upload your recording, a new word will appear when you do so.\n"
 "  "
 msgstr ""
+"\n"
+"  通过点击“记录”按钮记录单词并播放它以检查是否正确。   如果你认为你犯了一个错"
+"误，你可以通过点击“记录”按钮重新启动你的录音。  点击“上传”按钮上传你的录音，"
+"当你这样做的时候会出现一个新单词。"
 
-#: recording/templates/recording.html:29
+#: recording/templates/recording.html:25
 msgid ""
 "\n"
 "  You can make as many recordings as you like, and you can come back later\n"
 "  to this page to make more recordings.\n"
 "  "
 msgstr ""
+"\n"
+"  你可以做尽可能多的录音，你可以回来后，本页作出更多的录音。"
 
-#: recording/templates/recording.html:33
+#: recording/templates/recording.html:29
 msgid ""
 "\n"
-"    Make sure you are using a recent version of Google Chrome.\n"
+"    Make sure you are using a recent version of Google Chrome or Firefox.\n"
 "    "
 msgstr ""
+"\n"
+"  请确保您使用的是谷歌浏览器或Firefox的最新版本。"
 
-#: recording/templates/recording.html:36
+#: recording/templates/recording.html:32
 msgid "Next recording:"
-msgstr ""
+msgstr "下一个："
 
-#: recording/templates/recording.html:37
+#: recording/templates/recording.html:33
 msgid "pinyin should be here"
 msgstr ""
 
-#: recording/templates/recording.html:38
+#: recording/templates/recording.html:34
 msgid "Recordings"
-msgstr ""
+msgstr "录音"
 
-#: recording/templates/recording.html:46
+#: recording/templates/recording.html:42
 msgid "'please listen to your recording before you upload it'"
-msgstr ""
+msgstr "'在上传之前请听录音'"
 
-#: recording/templates/recording.html:49
+#: recording/templates/recording.html:45
 msgid "upload"
-msgstr ""
+msgstr "长传"
 
-#: recording/templates/recording.html:52
+#: recording/templates/recording.html:48
 msgid "record"
-msgstr ""
+msgstr "录音"
 
-#: recording/templates/recording.html:55
+#: recording/templates/recording.html:51
 msgid "stop"
-msgstr ""
+msgstr "停止"
 
-#: recording/templates/recording.html:113
+#: recording/templates/recording.html:109
 msgid "'No web audio support in this browser!'"
 msgstr ""
 
-#: userregistration/contributor.py:13
+#: registration/contributor.py:18
 msgid "Male"
-msgstr ""
+msgstr "男"
 
-#: userregistration/contributor.py:14
+#: registration/contributor.py:19
 msgid "Female"
-msgstr ""
+msgstr "女"
 
-#: userregistration/contributor.py:15
-msgid "No answer"
-msgstr ""
+#: registration/contributor.py:20
+msgid "Other"
+msgstr "其他"
 
-#: userregistration/models.py:16
-msgid "First Name"
-msgstr ""
+#: registration/contributor.py:21
+msgid "Rather not say"
+msgstr "不便透露"
 
-#: userregistration/models.py:20
+#: registration/models.py:12
+msgid ""
+"Used for attribution, can be an alias, if left blank e-mail will be used for "
+"attribution."
+msgstr "用于进行署名，可以是假名，如果留下空白的电子邮件将用于进行署名。 "
+
+#: registration/models.py:18
+msgid "First Name (optional)"
+msgstr "名字（无必要）"
+
+#: registration/models.py:24
+msgid "Last Name (optional)"
+msgstr "姓氏（无必要）"
+
+#: registration/models.py:31
 msgid "e-mail address"
-msgstr ""
+msgstr "电子邮件"
 
-#: userregistration/models.py:42
+#: registration/models.py:54
 msgid "I am..."
 msgstr "我的性别是……"
 
-#: userregistration/views.py:66
-msgid "Welcome to my site."
+#: registration/models.py:59
+msgid ""
+"I accept that my contributions are released under the                  <a "
+"href='https://creativecommons.org/licenses/by-sa/4.0/'>                  "
+"Creative Commons CC BY-SA 4.0 license</a>."
 msgstr ""
+"我承认我的贡献是<a href='https://creativecommons.org/licenses/by-"
+"sa/4.0/'>Creative Commons CC BY-SA 4许可</a>下发布。"
+
+#: registration/models.py:84
+msgid "Pinyin 1"
+msgstr "拼音一"
+
+#: registration/models.py:88
+msgid "Pinyin 2"
+msgstr "拼音二"
+
+#: registration/models.py:91
+msgid "Pinyin 3"
+msgstr "拼音三"
+
+#: registration/models.py:117
+msgid ""
+"Wrong pinyin, please try again. Tones must be included (i.e., write ma1 if "
+"you hear 妈, ma5 if you hear 吗)."
+msgstr ""
+"拼音错误，请再试一次。音调必须包含（即写ma1如果你听到“妈”，ma5如果你听"
+"到“吗”）。 "
+
+#: registration/templates/change_password.html:19
+#: reset_password/templates/reset_password.html:19
+msgid "Submit"
+msgstr "填报"
+
+#: registration/templates/login.html:22
+#: registration/templates/registration/login.html:22
+msgid "Lost password?"
+msgstr "忘记了密码吗？"
+
+#: registration/templates/registration.html:31
+msgid "Accept License"
+msgstr "接受许可证"
+
+#: registration/templates/registration.html:93
+msgid "Sign up"
+msgstr "注册"
+
+#: reset_password/forms.py:14
+msgid "The two password fields didn't match."
+msgstr "两个密码字段不一致。"
+
+#: reset_password/forms.py:16
+msgid "New password"
+msgstr "新密码"
+
+#: reset_password/forms.py:18
+msgid "New password confirmation"
+msgstr "新密码确认"
+
+#: reset_password/templates/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"你收到这封电子邮件，因为你要求一个密码重置您的用户帐户在%(site_name)s。"
+
+#: reset_password/templates/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr "请转到下一页，并选择一个新的密码："
+
+#: reset_password/templates/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr "你的用户名，以防你忘记："
+
+#: reset_password/templates/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr "感谢使用我们的网站！"
+
+#: reset_password/templates/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "%(site_name)s团队"

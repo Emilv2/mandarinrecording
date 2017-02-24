@@ -55,10 +55,10 @@ class ContributorCreationForm(forms.ModelForm):
     )
 
     accepted_license = forms.BooleanField(
-        label=_(format_html(
+        label=_(
                 "I accept that my contributions are released under the \
                  <a href='https://creativecommons.org/licenses/by-sa/4.0/'> \
-                 Creative Commons CC BY-SA 4.0 license</a>.")),
+                 Creative Commons CC BY-SA 4.0 license</a>."),
         required=True
     )
 
@@ -80,9 +80,16 @@ class AudioCaptchaForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(AudioCaptchaForm, self).__init__(*args, **kwargs)
 
-    pinyin1 = forms.CharField()
-    pinyin2 = forms.CharField()
-    pinyin3 = forms.CharField()
+    pinyin1 = forms.CharField(
+        label=_('Pinyin 1')
+    )
+
+    pinyin2 = forms.CharField(
+        label=_('Pinyin 2')
+    )
+    pinyin3 = forms.CharField(
+        label=_('Pinyin 3')
+    )
 
     def is_valid_pinyin(self, pinyin):
         data = self.data[pinyin]\

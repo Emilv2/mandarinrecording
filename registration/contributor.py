@@ -12,11 +12,13 @@ class Contributor(models.Model):
 
     MALE = 'M'
     FEMALE = 'F'
+    OTHER = 'O'
     NO_ANSWER = 'N'
     SEX_CHOISES = (
         (MALE, _('Male')),
         (FEMALE, _('Female')),
-        (NO_ANSWER, _('No answer')))
+        (OTHER, _('Other')),
+        (NO_ANSWER, _('Rather not say')))
     sex = models.CharField(
         max_length=1,
         choices=SEX_CHOISES)
