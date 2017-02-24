@@ -168,7 +168,7 @@ def pretty_pinyin(string):
         'ai1': 'āi', 'ai2': 'ái', 'ai3': 'ǎi', 'ai4': 'ài', 'ai5': 'ai',
         'ei1': 'ēi', 'ei2': 'éi', 'ei3': 'ěi', 'ei4': 'èi', 'ei5': 'ei',
         'ao1': 'āo', 'ao2': 'áo', 'ao3': 'ǎo', 'ao4': 'ào', 'ao5': 'ao',
-        'ou1': 'ōu', 'ou2': 'óu', 'ou3': 'ǒu', 'ou4': 'òu', 'ou5': 'ou5',
+        'ou1': 'ōu', 'ou2': 'óu', 'ou3': 'ǒu', 'ou4': 'òu', 'ou5': 'ou',
         'an1': 'ān', 'an2': 'án', 'an3': 'ǎn', 'an4': 'àn', 'an5': 'an',
         'en1': 'ēn', 'en2': 'én', 'en3': 'ěn', 'en4': 'èn', 'en5': 'en',
         'ang1': 'āng', 'ang2': 'áng', 'ang3': 'ǎng', 'ang4': 'àng',
