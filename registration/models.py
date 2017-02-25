@@ -81,20 +81,21 @@ class AudioCaptchaForm(forms.Form):
         super(AudioCaptchaForm, self).__init__(*args, **kwargs)
 
     pinyin1 = forms.CharField(
-        label=_('Pinyin 1')
+        label=_('Pinyin Captcha 1')
     )
 
     pinyin2 = forms.CharField(
-        label=_('Pinyin 2')
+        label=_('Pinyin Captcha 2')
     )
     pinyin3 = forms.CharField(
-        label=_('Pinyin 3')
+        label=_('Pinyin captcha 3')
     )
 
     def is_valid_pinyin(self, pinyin):
         data = self.data[pinyin]\
             .replace('0', '5')\
-            .replace(' ', '')
+            .replace(' ', '')\
+            .lower()
         if data == PINYIN_DICT[pinyin]:
             return True
         else:
