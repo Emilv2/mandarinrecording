@@ -293,7 +293,7 @@ msgstr "'在上传之前请听录音'"
 
 #: recording/templates/recording.html:45
 msgid "upload"
-msgstr "长传"
+msgstr "上传"
 
 #: recording/templates/recording.html:48
 msgid "record"
