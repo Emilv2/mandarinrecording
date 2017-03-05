@@ -53,19 +53,40 @@
           {% endbuttons %}
       </li>
   </ul>
+  <h2>{% trans "Recordings" %}</h2>
+	    <input type="file" id='input' accept="audio/*" onchange='handleFiles()' capture>
+
     </div>
   {% load static %}
-  <script src="{% static "jquery-1.11.3.min.js" %}"></script>
 <script>
   "use strict";
   var recordButton = document.getElementById('recordButton');
   var stopButton = document.getElementById('stopButton');
   var uploadButton = document.getElementById('uploadButton');
   var audioElement = document.getElementById('audioElement');
+  var mobileUpload = document.getElementById('mobileUpload');
   var audioFile;
   var uploaded = false;
   var audio_context;
   var recorder;
+
+function handleFiles()
+{
+    var filesToUpload = document.getElementById('input').files;
+    var file = filesToUpload[0];
+
+    // Create an image
+    //var img = document.createElement("img");
+    // Create a file reader
+    var reader = new FileReader();
+    // Set the image once loaded into file reader
+    reader.onload = function(e)
+     {
+       audioElement.src = e.target.result;
+    }
+    // Load files into file reader
+     reader.readAsDataURL(file);
+    }
 
   recordButton.onclick = function() {
       recorder && recorder.record();
@@ -85,7 +106,7 @@
   }
 
   uploadButton.onclick = function() {
-      upload(audioFile, window.pinyin.pinyin);
+      upload(audioElement.src, window.pinyin.pinyin);
       setNextSyllable();
       this.disabled = true;
   }
